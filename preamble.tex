@@ -2,10 +2,25 @@
 %% However, you cannot make new environments
 
 \usepackage[letterpaper, total={6in, 8in}]{geometry}
-\graphicspath{{./}{firstExample/}{secondExample/}}
 
 \usepackage{tikz}
 \usepackage{tkz-euclide}
 \usetkzobj{all}
 
 \tikzstyle geometryDiagrams=[ultra thick,color=blue!50!black]
+
+%\usepackage{enumerate}
+\usepackage{euler}
+
+ 
+\usetikzlibrary{shapes,snakes}
+\tikzset{
+  dot hidden/.style={},
+  line hidden/.style={},
+  dot colour/.style={dot hidden/.append style={color=#1}},
+  dot colour/.default=black,
+  line colour/.style={line hidden/.append style={color=#1}},
+  line colour/.default=black
+}
+
+%\input{./../img/sageinput.tex}

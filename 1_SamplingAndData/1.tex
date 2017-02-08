@@ -7,21 +7,285 @@
 \empty
 \end{abstract}
 \maketitle
-\begin{center}
-\includegraphics[width=12cm]{../hbplot.png}
-\end{center}
+\input{../img/sageinput.tex}
 
-\begin{problem} 
-Please, answer the following questions for the following box plot for the total bill of customers dining in the restaurant ``Yeah Me Too!''. 
+\begin{problem} Below, you will find the box plot of the total bill of customers dining in the restaurant ``Yeah Me Too!'' throughout a single week. Please, answer the following questions.
 
-Which of the following amount is more likely to be the minimum payment that a customer makes?
-    \begin{multipleChoice}
-        \choice{0}
-        \choice[correct]{3}
-        \choice{14}
-        \choice{-5}
-    \end{multipleChoice}
+\begin{image}
+    \includegraphics[width=15cm]{../img/hbplot.png}
+\end{image}
 
+\begin{enumerate}
+    \item What is the median?
+ \begin{multipleChoice}
+    \choice{6}
+    \choice{14}
+    \choice[correct]{18}
+    \choice{24}
+    \choice{55}
+\end{multipleChoice}
+    \item What is the 1st Quartile?
+ \begin{multipleChoice}
+    \choice{6}
+    \choice[correct]{14}
+    \choice{18}
+    \choice{24}
+\end{multipleChoice}
+    \item What is the 3rd Quartile?
+ \begin{multipleChoice}
+    \choice{14}
+    \choice{18}
+    \choice[correct]{24}
+    \choice{30}
+    \choice{40}
+\end{multipleChoice}
+    \item What is the IQR?
+ \begin{multipleChoice}
+    \choice{3}
+    \choice[correct]{10}
+    \choice{14}
+    \choice{15}
+\end{multipleChoice}
+    \item What is the minimum?
+ \begin{multipleChoice}
+    \choice{0}
+    \choice[correct]{3}
+    \choice{6}
+    \choice{14}
+\end{multipleChoice}
+    \item What is the maximum?
+ \begin{multipleChoice}
+    \choice{40}
+    \choice{50}
+    \choice[correct]{52}
+    \choice{55}
+\end{multipleChoice}
+    \item Is the left end of the whisker minimum or (1st Quartile)-1.5*(IQR)?
+    \begin{hint}
+        Whiskers are the thin lines that end at a hash mark on both ends of the box. Outliers are the small dots outside them.
+    \end{hint}
+ \begin{multipleChoice}
+    \choice[correct]{Minimum}
+    \choice{(1st Quartile)-1.5*(IQR)}
+\end{multipleChoice}
+    \item Is the right end of the whisker maximum or (3rd Quartile)+1.5*(IQR)?
+    \begin{hint}
+        Whiskers are the thin lines that end at a hash mark on both ends of the box. Outliers are the small dots outside them.
+    \end{hint}
+ \begin{multipleChoice}
+    \choice{Maximum}
+    \choice[correct]{(3rd Quartile)+1.5*(IQR)}
+\end{multipleChoice}
 
+\end{enumerate}
 \end{problem}
+
+\begin{problem}
+\begin{sagesilent}
+import scipy.stats
+data=[1,24,25,30,31,35,45, 50, 50, 50 , 52, 52, 65, 65, 76, 77, 78, 78, 78, 78, 80, 83, 85, 86, 89, 90, 90, 90, 99,100]
+\end{sagesilent}
+Please, draw the box plot representing the following sample data consisting of 30 exam scores in a class of 100 students and \textbf{submit it in class on Monday}. Moreover, answer the following problems.
+
+$$\sage{data}$$
+
+\begin{enumerate}
+    \item Minimum is $\answer{\sage{min(data)}}$.
+    \item Maximum is $\answer{\sage{max(data)}}$.
+    \item Mode is $\answer{\sage{mode(data)[0]}}$.
+    \item Median is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(50))}}$.
+    \item 1st Quartile is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(25))}}$.
+    \item 3rd Quartile is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(75))}}$.
+    \item 71th--percentile is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(71))}}$.
+    \item Sample Mean is $\answer[tolerance=0.01]{\sage{mean(data)}}$.
+    \item Sample Variance is $\answer[tolerance=0.01]{\sage{variance(data)}}$.
+    \item Sample Standard Deviation is $\answer[tolerance=0.01]{\sage{std(data)}}$.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+import scipy.stats
+data=[6,24,25,30,31,35,45]
+\end{sagesilent}
+Please, draw the box plot representing the following sample data consisting of 30 exam scores in a class of 100 students and \textbf{submit it in class on Monday}. Moreover, answer the following problems.
+
+$$\sage{data}$$
+
+\begin{enumerate}
+    \item Minimum is $\answer{\sage{min(data)}}$.
+    \item Maximum is $\answer{\sage{max(data)}}$.
+    \item Mode is $\answer{\sage{mode(data)[0]}}$.
+    \item Median is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(50))}}$.
+    \item 1st Quartile is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(25))}}$.
+    \item 3rd Quartile is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(75))}}$.
+    \item 71th--percentile is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(71))}}$.
+    \item Sample Mean is $\answer[tolerance=0.01]{\sage{mean(data)}}$.
+    \item Sample Variance is $\answer[tolerance=0.01]{\sage{variance(data)}}$.
+    \item Sample Standard Deviation is $\answer[tolerance=0.01]{\sage{std(data)}}$.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+import scipy.stats
+data=[9,10,16,16,32,32,48,50]
+\end{sagesilent}
+Please, draw the box plot representing the following sample data consisting of 30 exam scores in a class of 100 students and \textbf{submit it in class on Monday}. Moreover, answer the following problems.
+
+$$\sage{data}$$
+
+\begin{enumerate}
+    \item Minimum is $\answer{\sage{min(data)}}$.
+    \item Maximum is $\answer{\sage{max(data)}}$.
+    \item Mode is $\answer{\sage{mode(data)[0]}}$.
+    \item Median is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(50))}}$.
+    \item 1st Quartile is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(25))}}$.
+    \item 3rd Quartile is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(75))}}$.
+    \item 71th--percentile is $\answer{\sage{scipy.stats.scoreatpercentile(data,int(71))}}$.
+    \item Sample Mean is $\answer[tolerance=0.01]{\sage{mean(data)}}$.
+    \item Sample Variance is $\answer[tolerance=0.01]{\sage{variance(data)}}$.
+    \item Sample Standard Deviation is $\answer[tolerance=0.01]{\sage{std(data)}}$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+The following is the histogram of exam scores of a sample of 100 students. Please, answer the questions.
+
+\begin{sagesilent}
+size=50
+bin=7
+min=16
+max=100
+myhis=myhist(size,bin,min,max)
+mmx=myhis.get_minmax_data()
+myxmin=mmx['xmin']    
+myxmax=mmx['xmax']    
+\end{sagesilent}
+
+\sageplot[width=12cm][png]{myhis}
+
+\begin{enumerate}
+    \item Minimum exam score is $\answer[tolerance=2]{\sage{myxmin}}$
+    \item Maximum exam score is $\answer[tolerance=2]{\sage{myxmax}}$
+    \item Number of bins is $\answer{\sage{bin}}$.
+    \item Length of each subinterval is $\answer[tolerance=0.5]{\sage{myxmax/bin-myxmin/bin}}$
+    \item Size of data is $\answer[tolerance=4]{\sage{size}}$
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+The following is the histogram of exam scores of a sample of 100 students. Please, answer the questions.
+
+\begin{sagesilent}
+size=70
+bin=6
+min=25
+max=90
+myhis=myhist(size,bin,min,max)
+mmx=myhis.get_minmax_data()
+myxmin=mmx['xmin']    
+myxmax=mmx['xmax']    
+\end{sagesilent}
+
+\sageplot[width=12cm][png]{myhis}
+
+\begin{enumerate}
+    \item Minimum exam score is $\answer[tolerance=2]{\sage{myxmin}}$
+    \item Maximum exam score is $\answer[tolerance=2]{\sage{myxmax}}$
+    \item Number of bins is $\answer{\sage{bin}}$.
+    \item Length of each subinterval is $\answer[tolerance=0.5]{\sage{myxmax/7-myxmin/7}}$
+    \item Size of data is $\answer[tolerance=4]{\sage{size}}$
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+mydata=[randint(10,50) for i in range(30)]
+mydata.sort()
+bin=5
+min=mydata[0]
+max=mydata[len(mydata)-1]
+bin=5
+binsize=(max-min)/bin
+ind=[min+i*binsize for i in range(bin+1)]
+subd=[[x for x in mydata if (x<ind[i+1] and x>= ind[i]) or (i==bin-1 and x==max)] for i in range(bin)]
+\end{sagesilent}
+
+Draw the histogram of the following data set using $\sage{bin}$ bins. Submit your work in class on Monday!
+
+$$\sage{mydata}$$
+
+\begin{enumerate}
+    \item Minimum is $\answer{\sage{min}}$.
+    \item Maximum is $\answer{\sage{max}}$.
+    \item The width of each bin is $\answer{\sage{binsize}}$.
+    \item Bin 1 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[0]}}, \answer{\sage{ind[1]}})$
+    \item The number of data in bin 1 is $\answer{\sage{len(subd[0])}}$.
+    \item Bin 2 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[1]}}, \answer{\sage{ind[2]}})$
+    \item The number of data in bin 2 is $\answer{\sage{len(subd[1])}}$
+    \item Bin 3 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[2]}}, \answer{\sage{ind[3]}})$
+    \item The number of data in bin 3 is $\answer{\sage{len(subd[2])}}$
+    \item Bin 4 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[3]}}, \answer{\sage{ind[4]}})$
+    \item The number of data in bin 4 is $\answer{\sage{len(subd[3])}}$
+    \item Bin 5 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[4]}}, \answer{\sage{ind[5]}}]$
+    \item The number of data in bin 5 is $\answer{\sage{len(subd[4])}}$
+    \item Now that you answered, almost all relevant questions, please submit the sketch of the histogram in class.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+mydata=[randint(5,55) for i in range(35)]
+mydata.sort()
+min=mydata[0]
+max=mydata[len(mydata)-1]
+bin=6
+binsize=(max-min)/bin
+ind=[min+i*binsize for i in range(bin+1)]
+subd=[[x for x in mydata if (x<ind[i+1] and x>= ind[i]) or (i==bin-1 and x==max)] for i in range(bin)]
+\end{sagesilent}
+
+Draw the histogram of the following data set using $\sage{bin}$ bins. Submit your work in class on Monday!
+
+$$\sage{mydata}$$
+
+\begin{enumerate}
+    \item Minimum is $\answer{\sage{min}}$.
+    \item Maximum is $\answer{\sage{max}}$.
+    \item The width of each bin is $\answer{\sage{binsize}}$.
+    \item Bin 1 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[0]}}, \answer{\sage{ind[1]}})$
+    \item The number of data in bin 1 is $\answer{\sage{len(subd[0])}}$.
+    \item Bin 2 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[1]}}, \answer{\sage{ind[2]}})$
+    \item The number of data in bin 2 is $\answer{\sage{len(subd[1])}}$
+    \item Bin 3 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[2]}}, \answer{\sage{ind[3]}})$
+    \item The number of data in bin 3 is $\answer{\sage{len(subd[2])}}$
+    \item Bin 4 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[3]}}, \answer{\sage{ind[4]}})$
+    \item The number of data in bin 4 is $\answer{\sage{len(subd[3])}}$
+    \item Bin 5 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[4]}}, \answer{\sage{ind[5]}})$
+    \item The number of data in bin 5 is $\answer{\sage{len(subd[4])}}$
+    \item Bin 6 corresponds to data whose values are in the interval 
+    $[\answer{\sage{ind[5]}}, \answer{\sage{ind[6]}}]$
+    \item The number of data in bin 5 is $\answer{\sage{len(subd[4])}}$
+    \item Now that you answered, almost all relevant questions, please submit the sketch of the histogram in class.
+\end{enumerate}
+\end{problem}
+
+
+
 \end{document}
