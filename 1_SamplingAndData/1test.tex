@@ -7,7 +7,6 @@
 \empty
 \end{abstract}
 \maketitle
-\input{./../img/sageinput.tex}
 \begin{problem}
 The following is the histogram of exam scores of a sample of 100 students. Please, answer the questions.
 
@@ -16,7 +15,7 @@ size=50
 bin=7
 min=16
 max=100
-myhis=myhist(size,bin,min,max)
+myhis=histogram([randint(min,max) for _ in range(size)], bins=bin)
 mmx=myhis.get_minmax_data()
 myxmin=mmx['xmin']    
 myxmax=mmx['xmax']    
