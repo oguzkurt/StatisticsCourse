@@ -1,0 +1,35 @@
+\documentclass{ximera}
+\input{../preamble.tex}
+\title{Statistics Visuals HW}
+\author{Oguz Kurt}
+\begin{document}
+\begin{abstract}
+\empty
+\end{abstract}
+\maketitle
+\input{./../img/sageinput.tex}
+\begin{problem}
+The following is the histogram of exam scores of a sample of 100 students. Please, answer the questions.
+
+\begin{sagesilent}
+size=50
+bin=7
+min=16
+max=100
+myhis=myhist(size,bin,min,max)
+mmx=myhis.get_minmax_data()
+myxmin=mmx['xmin']    
+myxmax=mmx['xmax']    
+\end{sagesilent}
+
+\sageplot[width=12cm][png]{myhis}
+
+\begin{enumerate}
+    \item Minimum exam score is $\answer[tolerance=2]{\sage{myxmin}}$
+    \item Maximum exam score is $\answer[tolerance=2]{\sage{myxmax}}$
+    \item Number of bins is $\answer{\sage{bin}}$.
+    \item Length of each subinterval is $\answer[tolerance=0.5]{\sage{myxmax/bin-myxmin/bin}}$
+    \item Size of data is $\answer[tolerance=4]{\sage{size}}$
+\end{enumerate}
+\end{problem}
+\end{document}
