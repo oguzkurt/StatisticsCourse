@@ -99,6 +99,8 @@ def myperc(data,p):
             return data[n-1]
     else:
         return "percent must be between 0 and 100."
+a=mode(data)
+a.sort()
 \end{sagesilent}
 Please, draw the box plot representing the following sample data consisting of 30 exam scores in a class of 100 students and \textbf{submit it in class on Monday}. Moreover, answer the following problems.
 
@@ -107,7 +109,12 @@ $$\sage{data}$$
 \begin{enumerate}
     \item Minimum is $\answer{\sage{min(data)}}$.
     \item Maximum is $\answer{\sage{max(data)}}$.
-    \item Mode is $\answer{\sage{mode(data)[0]}}$.
+    \item Mode is $\answer{\sage{a}}$.
+            \begin{hint}
+        Enter your mode as an increasing list between square brackets. 
+        Suppose you have the mode as 5, 17, 123, 21. Then write $[5, 17,21, 123]$ in increasing order.
+        \end{hint}
+
     \item Median is $\answer{\sage{myperc(data,50)}}$.
     \item 1st Quartile is $\answer{\sage{myperc(data,25)}}$.
     \item 3rd Quartile is $\answer{\sage{myperc(data,75)}}$.
@@ -123,6 +130,21 @@ $$\sage{data}$$
 \begin{sagesilent}
 import scipy.stats
 data=[6,24,25,30,31,35,45]
+a=mode(data)
+a.sort()
+mymean=mean(data)
+def myvar(data,loc):
+    n=len(data)
+    m=mean(data)
+    tot=0
+    for i in range(n):
+        tot=tot+(data[i]-m)**2
+    if loc==0:
+        return tot/n
+    elif loc==1:
+        return tot/(n-1)
+    
+    
 \end{sagesilent}
 Please, draw the box plot representing the following sample data consisting of 7 exam scores in a class of 100 students and \textbf{submit it in class on Monday}. Moreover, answer the following problems.
 
@@ -131,7 +153,11 @@ $$\sage{data}$$
 \begin{enumerate}
     \item Minimum is $\answer{\sage{min(data)}}$.
     \item Maximum is $\answer{\sage{max(data)}}$.
-    \item Mode is $\answer{\sage{mode(data)[0]}}$.
+    \item Mode is $\answer{\sage{a}}$.
+        \begin{hint}
+        Enter your mode as an increasing list between square brackets. 
+        Suppose you have the mode as 5, 17, 123, 21. Then write $[5, 17,21, 123]$ in increasing order.
+        \end{hint}
     \item Median is $\answer{\sage{myperc(data,50)}}$.
     \item 1st Quartile is $\answer{\sage{myperc(data,25)}}$.
     \item 3rd Quartile is $\answer{\sage{myperc(data,75)}}$.
@@ -147,6 +173,8 @@ $$\sage{data}$$
 \begin{sagesilent}
 import scipy.stats
 data=[9,10,16,16,32,32,48,50]
+a=mode(data)
+a.sort()
 \end{sagesilent}
 Please, draw the box plot representing the following sample data consisting of 8 exam scores in a class of 100 students and \textbf{submit it in class on Monday}. Moreover, answer the following problems.
 
@@ -155,7 +183,11 @@ $$\sage{data}$$
 \begin{enumerate}
     \item Minimum is $\answer{\sage{min(data)}}$.
     \item Maximum is $\answer{\sage{max(data)}}$.
-    \item Mode is $\answer{\sage{mode(data)[0]}}$.
+    \item Mode is $\answer{\sage{a}}$.
+        \begin{hint}
+        Enter your mode as an increasing list between square brackets. 
+        Suppose you have the mode as 5, 17, 123, 21. Then write $[5, 17,21, 123]$ in increasing         order.
+        \end{hint}
     \item Median is $\answer{\sage{myperc(data,50)}}$.
     \item 1st Quartile is $\answer{\sage{myperc(data,25)}}$.
     \item 3rd Quartile is $\answer{\sage{myperc(data,75)}}$.
