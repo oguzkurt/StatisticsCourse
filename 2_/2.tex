@@ -26,40 +26,41 @@ def p(n,k):
 \end{sagesilent}
 
 \section*{Syntax}
-In this HW, you are expected to solve problems of counting. Before we start, here is some help as to how to answer the problems. You can of course calculate the answer using a calculator and enter it to the corresponding answer box but there is an easier way for you. This table is to help you. Do not calculate the answer in your mind or using a calculator. Instead, use the syntax and let the answer box do it for you:
+In this HW, you are expected to solve problems of counting. Before we start, here is some help as to how to answer the problems. You can of course calculate the answer using a calculator and enter it to the corresponding answer box but there is an easier way for you. 
 
 \hspace{0.5cm}
 
-\begin{exercise}
+\begin{exercise} This table is to help you. Do not calculate the answer in your mind or using a calculator. Instead, use the syntax and let the answer box do it for you:
+
 \begin{tabular}{c|c|c|c}
 Operation & Syntax & Example & Answer 
 \\
 \hline
-$a+b$ & {\color{red} a+b} & $3+5$ & $\answer{\sage{3+5} }$
+$a+b$ & {\color{red} \verb|a+b|} & $3+5$ & $\answer{\sage{3+5} }$
 \\
 \hline
-$a- b$ & {\color{red} a-b} & $3-5$ & $\answer{\sage{3-5} }$
+$a- b$ & {\color{red} \verb|a-b|} & $3-5$ & $\answer{\sage{3-5} }$
 \\
 \hline
-$a\cdot b$ & {\color{red} a*b} & $3\times 5$ & $\answer{\sage{3*5} }$
+$a\cdot b$ & {\color{red} \verb|a*b| } & $3\times 5$ & $\answer{\sage{3*5} }$
 \\
 \hline
-$a/b=\frac{a}{b}$ & {\color{red} a/b} & $\frac{3}{5}$ & $\answer{\sage{3/5} }$
+$a/b=\frac{a}{b}$ & {\color{red} \verb|a/b|} & $\frac{3}{5}$ & $\answer{\sage{3/5} }$
 \\
 \hline
-$a^b$ & {\color{red} a**b} & $3^5$ & $\answer{\sage{3**5} }$
+$a^b$ & {\color{red} \verb|a**b| or \verb|3^5|} & $3^5$ & $\answer{\sage{3**5} }$
 \\
 \hline
-$\sqrt{a}$ & {\color{red} sqrt(a) or a**(1/2)} & $\sqrt{5}$ & $\answer{\sage{sqrt(5)} }$
+$\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} & $\sqrt{5}$ & $\answer{\sage{sqrt(5)} }$
 \\
 \hline
-$a!$ & {\color{red} a!} & $50!$ & $\answer{\sage{factorial(50)} }$
+$a!$ & {\color{red} \verb|a!|} & $50!$ & $\answer{\sage{factorial(50)} }$
 \\
 \hline
-$\binom{a}{b}$ & {\color{red} a!/(b!*(a-b)!)} & $\binom{50}{45}$ & $\answer{\sage{factorial(50)/factorial(45)/factorial(5)}}=\answer{\sage{binomial(50,45)}}$ 
+$\binom{a}{b}$ & {\color{red} \verb|a!/(b!*(a-b)!)|} & $\binom{50}{45}$ & $\answer{\sage{binomial(50,45)}}$ 
 \\
 \hline
-$P_k^n$ & {\color{red} a!/(a-b)!} & $P_{30}^{100}$ & $\answer{\sage{binomial(100,30)*factorial(30)} }$ 
+$P_k^n$ & {\color{red} \verb|a!/(a-b)!|} & $P_{30}^{100}$ & $\answer{\sage{binomial(100,30)*factorial(30)} }$ 
 \\
 \end{tabular}
 \end{exercise}
@@ -90,17 +91,43 @@ It is clear that $A\cap B=\emptyset$ as no pair can have the total of 8 and 10 a
 Our main event E is the set of all pairs of dice with a total of 8 or 10. We get $E=A\cup B$ and A and B are mutually exclusive or mutually disjoint. Hence, by addition rule, we get
 
 $$|A\cup B|=|A|+|B|=\answer{5}+\answer{3}=\answer{8}$$
-
-
 \end{explanation}
+
+\begin{remark}
+We may have an even A as the union of multiple mutually exclusive events $A_1,~ A_2, ~\ldots, A_k$. Then 
+$$|A|=|A_1|+|A_2|+\ldots+|A_k|.$$
+\end{remark}
+
+\begin{remark}
+If the events A and B are not necessarily disjoint, then 
+$$|A\cup B|=|A|+|B|-|A\cap B|$$
+\end{remark}
 \end{example}
 
 
 
 
 
-\begin{problem}
-$\answer{\sage{factorial(500)/factorial(199)}}$
+\begin{problem} 
+ Star Pizza offers three choices for the diameter,
+two choices for crust thickness, and 12 choices of topping.   Suppose
+that you limit yourself to 5 or fewer toppings.   How many different
+pizzas can you construct?
+\begin{hint}
+    \item You first need to calculate the number of ways to select 5 or fewer toppings!
+        \begin{hint}
+            \item You need to use your knowledge of combinations and Addition Rule for this!
+            \item You need to find the number of ways to select k=0,1,2,3,4,5 toppings out of 12 toppings first. 
+        \end{hint}
+    \item Next, you need to use Multiplication Rule to get all possible kinds of pizzas!
+        \begin{hint}
+            How many different types of diameters, crust types and choices of at most 5 toppings do you have? You need to answer this question for each group!
+        \end{hint}
+\end{hint}
+
+\begin{explanation}
+    Number of all kinds of pizzas with the aforementioned possible choices is $$\answer{\sage{3*2*(binomial(12,0)+binomial(12,1)+binomial(12,2)+binomial(12,3)+binomial(12,4)+binomial(12,5))} }$$
+\end{explanation}
 \end{problem}
 
 \end{document}
