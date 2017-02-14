@@ -22,7 +22,9 @@ def p(n,k):
         return binomial(n,k)*factorial(k)
     else:
         return "error"
-
+def m(n,mylist):
+    l=len(mylist)
+    return factorial(n)/(prod([factorial(mylist[i]) for i in range(l)]))
 \end{sagesilent}
 
 \section*{Syntax}
@@ -105,8 +107,74 @@ $$|A\cup B|=|A|+|B|-|A\cap B|$$
 \end{example}
 
 
+\begin{problem}
+From a group of 30 staff member, 10 will be sent to vacation by a lottery. 2 will go to Hawaii, 5 will go to Florida and 3 will go to Quebec.
+
+\begin{enumerate}
+    \item The number of ways to select 10 lucky people is $\answer{\sage{m(10,[2,3,5])}}$.
+    \item Suppose also that each group will have a team leader who is in charge of fun. The number then is $\answer{\sage{m(10,[2,3,5])*factorial(2)*factorial(3)*factorial(5)}}$.    
+\end{enumerate}
+\end{problem}
+\begin{problem}
+How many ways are there to select 5 spades, 4 hearts, 3 diamonds, and 1 club to make a bridge player's hand?
+
+\begin{explanation}
+   Each suit has $\answer{13}$ cards. So, the answer is 
+   $$\answer{\sage{c(13,5)*c(13,4)*c(13,3)*c(13,1)}}.$$
+\end{explanation}
+\end{problem}
 
 
+\begin{problem}
+Forty equally skilled teams play a tournament in which every team plays every other team exactly once, and there are not ties.
+
+\begin{enumerate}
+\item  How many different games were played?
+$$
+\answer{\sage{c(40,2)}}
+$$
+\item  How many different possible outcomes for these games are
+there?
+%Each of the 780 games has two possible outcomes, so the total number of different outcomes is
+$$
+\answer{\sage{2^780}}
+$$
+\item  How many different ways are there for each team to win a different number of games?
+
+%If each team wins a different number of games, this corresponds to a unique ordering of the teams.There are 
+$$
+\answer{\sage{factorial(40)}}
+$$ 
+%such orderings.
+\end{enumerate}
+\end{problem}
+
+\begin{problem} 
+A football team ends the regular season with an 11-5 record. How many different sequences of wins and losses can lead to this outcome?
+
+\begin{explanation}
+   We are writing a 16-letter word using the alphabet $\{w,\ell\}$ by using $w$ 11 times and $\ell$ 5 times. So, the answer is 
+   $$\answer{\sage{c(16,11)}}.$$
+\end{explanation}
+\end{problem}
+
+\begin{problem} 
+How many different terms of the form $x^ix^jx^k$ are equal to $x^{10}?$
+
+\begin{explanation}
+We count the number of non-negative integer triples $(i,j,k)$ such that $i+j+k=10$. So, the answer is 
+   $$\answer{\sage{c(10+2,2)}}.$$
+\end{explanation}
+\end{problem}
+
+
+\begin{problem} 
+At a small zoo, you are in charge of a lion, a tiger, a cheetah, and panther, and a jaguar, all in separate cages. Overnight the cages are opened by vandals, and the cats all escape. The next morning you put food in the empty cages and sure enough, the cats settle down, one per cage, for breakfast. All permutations are equally likely. What is the number of ways that one cat has returned to its original cage while two pairs have swapped cages? 
+
+\begin{explanation}
+   $$\answer{\sage{c(5,1)*c(4,2)}}.$$
+\end{explanation}
+\end{problem}
 
 \begin{problem} 
  Star Pizza offers three choices for the diameter,
@@ -114,13 +182,13 @@ two choices for crust thickness, and 12 choices of topping.   Suppose
 that you limit yourself to 5 or fewer toppings.   How many different
 pizzas can you construct?
 \begin{hint}
-    \item You first need to calculate the number of ways to select 5 or fewer toppings!
+    \item[$(1)$] You first need to calculate the number of ways to select 5 or fewer toppings!
         \begin{hint}
-            \item You need to use your knowledge of combinations and Addition Rule for this!
-            \item You need to find the number of ways to select k=0,1,2,3,4,5 toppings out of 12 toppings first. 
+            \item[$(1a)$] You need to use your knowledge of combinations and Addition Rule for this!
+            \item[$(1b)$] You need to find the number of ways to select k=0,1,2,3,4,5 toppings out of 12 toppings first. 
         \end{hint}
-    \item Next, you need to use Multiplication Rule to get all possible kinds of pizzas!
-        \begin{hint}
+    \item[$(2)$] Next, you need to use Multiplication Rule to get all possible kinds of pizzas!
+        \begin{hint} $(2a)$
             How many different types of diameters, crust types and choices of at most 5 toppings do you have? You need to answer this question for each group!
         \end{hint}
 \end{hint}
@@ -128,6 +196,74 @@ pizzas can you construct?
 \begin{explanation}
     Number of all kinds of pizzas with the aforementioned possible choices is $$\answer{\sage{3*2*(binomial(12,0)+binomial(12,1)+binomial(12,2)+binomial(12,3)+binomial(12,4)+binomial(12,5))} }$$
 \end{explanation}
+\end{problem}
+
+
+
+\begin{problem} 
+
+How many distinct strings can you make out of the characters
+in the word ``potato-soup''?   (Include the hyphen as a character.)
+\begin{explanation}
+$$\answer{\sage{m(11,[2,3,2,1,1,1,1])} }$$
+\end{explanation}
+
+\end{problem}
+
+
+
+\begin{problem} 
+You need to form a battle group of 11 made up of orcs, elves, and
+goblins.   In how many ways can you choose the composition of your battle group?
+\begin{explanation}
+$$\answer{\sage{binomial(13,11)}}$$
+\end{explanation}
+\end{problem}
+
+
+
+\begin{problem} 
+You need to form a battle group consisting of an orc, an elf, and
+a goblin whose total strength is 12.   
+The strength of each creature is 
+an integer between 1 and 10 and the strength of the group is the sum of the
+individual strengths.  In how many ways can you construct your battle group?
+\begin{hint}
+    This problem would be very much like the previous one if the minimum strength were not 1. How would you adjust it?
+\end{hint}
+\begin{explanation}
+$$\answer{\sage{binomial(11,2)} }$$
+\end{explanation}
+
+\end{problem}
+
+
+
+\begin{problem} 
+You are out in the middle of the cornfields, where the (dirt) roads
+all run north-to-south or east-to-west, evenly spaced at one road per mile.   
+If you start
+at a road intersection and wish to get to the intersection 5 miles to the
+south and 7 miles west, how many different routes could you take?
+\begin{hint}
+Suppose you are writing a word using the letters ``s'' and ``w''. What is the length of this word? Can you calculate all possible words if you know the length?
+\end{hint}
+\begin{explanation}
+$$\answer{\sage{binomial(12,5)} }$$
+\end{explanation}
+
+\end{problem}
+
+
+
+\begin{problem} 
+Your latest cheap cell phone keyboard only includes the uppercase
+alphabet (26 characters total).  How many 12-character strings can you
+type that start with ``ST'' and contain no more than three T's?
+\begin{explanation}
+$$\answer{\sage{25^10+binomial(10,1)*25^9+binomial(10,2)*25^8}}$$
+\end{explanation}
+
 \end{problem}
 
 \end{document}
