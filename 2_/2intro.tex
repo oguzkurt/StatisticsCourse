@@ -1,6 +1,6 @@
 \documentclass{ximera}
 \input{../preamble.tex}
-\title{Counting and Probability 1}
+\title{Counting and Probability -- Introduction}
 \author{Oguz Kurt}
 
 \begin{document}
@@ -49,7 +49,7 @@ $a\cdot b$ & {\color{red} \verb|a*b| } & $3\times 5$ & $\answer{\sage{3*5} }$
 $a/b=\frac{a}{b}$ & {\color{red} \verb|a/b|} & $\frac{3}{5}$ & $\answer{\sage{3/5} }$
 \\
 \hline
-$a^b$ & {\color{red} \verb|a**b| or \verb|3^5|} & $3^5$ & $\answer{\sage{3**5} }$
+$a^b$ & {\color{red} \verb|a**b| or \verb|a^b|} & $3^5$ & $\answer{\sage{3**5} }$
 \\
 \hline
 $\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} & $\sqrt{5}$ & $\answer{\sage{sqrt(5)} }$
@@ -106,7 +106,7 @@ $$|A\cup B|=|A|+|B|-|A\cap B|$$
 
 
 \begin{theorem}[Multiplication Rule]
-Suppose an event A occurs m times and and event B occurs n times independently\footnote{We will discuss independence further}. Then number of ways of both events occurring is $|A|\times |B|=m\times n$.
+Suppose an event A occurs m times and and event B occurs n times independently. Then number of ways of both events occurring is $|A|\times |B|=m\times n$.
 \end{theorem}
 
 \begin{remark}
@@ -126,7 +126,7 @@ Suppose we roll a pair of dice. Instead of this single experiment S, we can thin
 
 $$A_1=A_2=\{1,2,3,4,5,6\} \text{ and } S=A_1\times A_2.$$
 
-So, $|S|=6\times 6=36$.
+So, $|S|=\answer{6}\times \answer{6}=\answer{36}$.
 \end{example}
 
 \begin{definition}[Factorial]
@@ -138,7 +138,7 @@ We also define $0!=1$ for conventional reasons.
 \end{definition}
 
 \begin{example}
-$5!=5\cdot 4 \cdot 3 \cdot 2 \cdot 1=\sage{factorial(5)}$
+$5!=5\cdot 4 \cdot 3 \cdot 2 \cdot 1=\answer{\sage{factorial(5)}}$
 \end{example}
 \begin{theorem}[Permutations -- Ordered lists]
 Number of k-letter words using distinct letters from an n-element alphabet is $P_k^n=P(n,k)=\frac{n!}{(n-k)!}$
@@ -149,9 +149,9 @@ Number of ways to select a president, a vice president, a treasurer, a secretary
 $$
 P(30,5)
 =
-\frac{30!}{25!}
+\frac{\answer{\sage{factorial(30)}}}{\answer{\sage{factorial(25)}}}
 =
-\sage{p(30,5)}
+\answer{\sage{p(30,5)}}
 $$ 
 \end{example}
 
@@ -166,9 +166,9 @@ Number of ways to select 10 students out of 30 for a trip to Hawaii is
 $$
 \binom{30}{10}
 =
-\frac{30!}{10!20!}
+\frac{\answer{\sage{factorial(30)}}}{\answer{\sage{factorial(10)}}\cdot\answer{\sage{factorial(20)}}}
 =
-\sage{c(30,10)}
+\answer{\sage{c(30,10)}}
 $$ 
 \end{example}
 
@@ -185,7 +185,7 @@ $$
 =
 \frac{14!}{5!2!4!3!}
 =
-\sage{m(14,[5,2,4,3])}
+\answer{\sage{m(14,[5,2,4,3])}}
 $$ 
 \end{example}
 
@@ -203,7 +203,7 @@ $$
 =
 \binom{29}{20}
 =
-\sage{binomial(29,20)}
+\answer{\sage{binomial(29,20)}}
 .
 $$
 \end{example}
