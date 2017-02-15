@@ -1,14 +1,13 @@
 \documentclass{ximera}
 \input{../preamble.tex}
-\title{Counting and Probability 1}
+\title{Counting and Probability -- Homework 2}
 \author{Oguz Kurt}
 
 \begin{document}
 \begin{abstract}
-We introduce the syntax and some key theorems we discussed in class. No examples or proofs will be presented here since we have done those in class.
+\empty
 \end{abstract}
 \maketitle
-
 
 \begin{sagesilent}
 def c(n,k):
@@ -28,91 +27,52 @@ def m(n,mylist):
 \end{sagesilent}
 
 \section*{Syntax}
-In this HW, you are expected to solve problems of counting. Before we start, here is some help as to how to answer the problems. You can of course calculate the answer using a calculator and enter it to the corresponding answer box but there is an easier way for you. 
+In this HW, you are expected to solve problems of counting. Here is a reminder of the way to input some numbers. Please, use the parsing power of your browser instead of using a calculator.
 
 \hspace{0.5cm}
 
-\begin{exercise} This table is to help you. Do not calculate the answer in your mind or using a calculator. Instead, use the syntax and let the answer box do it for you:
 
-\begin{tabular}{c|c|c|c}
-Operation & Syntax & Example & Answer 
+\begin{tabular}{c|c}
+Operation & Syntax  
 \\
 \hline
-$a+b$ & {\color{red} \verb|a+b|} & $3+5$ & $\answer{\sage{3+5} }$
+$a+b$ & {\color{red} \verb!a+b!} 
 \\
 \hline
-$a- b$ & {\color{red} \verb|a-b|} & $3-5$ & $\answer{\sage{3-5} }$
+$a- b$ & {\color{red} \verb!a-b!} 
 \\
 \hline
-$a\cdot b$ & {\color{red} \verb|a*b| } & $3\times 5$ & $\answer{\sage{3*5} }$
+$a\cdot b$ & {\color{red} \verb!a*b! } 
 \\
 \hline
-$a/b=\frac{a}{b}$ & {\color{red} \verb|a/b|} & $\frac{3}{5}$ & $\answer{\sage{3/5} }$
+$a/b=\frac{a}{b}$ & {\color{red} \verb!a/b!}
 \\
 \hline
-$a^b$ & {\color{red} \verb|a**b| or \verb|3^5|} & $3^5$ & $\answer{\sage{3**5} }$
+$a^b$ & {\color{red} \verb|a**b| or \verb|a^b|} 
 \\
 \hline
-$\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} & $\sqrt{5}$ & $\answer{\sage{sqrt(5)} }$
+$\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} 
 \\
 \hline
-$a!$ & {\color{red} \verb|a!|} & $50!$ & $\answer{\sage{factorial(50)} }$
+$a!$ & {\color{red} \verb|a!|} 
 \\
 \hline
-$\binom{a}{b}$ & {\color{red} \verb|a!/(b!*(a-b)!)|} & $\binom{50}{45}$ & $\answer{\sage{binomial(50,45)}}$ 
+$\binom{a}{b}$ & {\color{red} \verb|a!/(b!*(a-b)!)|}
 \\
 \hline
-$P_k^n$ & {\color{red} \verb|a!/(a-b)!|} & $P_{30}^{100}$ & $\answer{\sage{binomial(100,30)*factorial(30)} }$ 
+$P_k^n$ & {\color{red} \verb|a!/(a-b)!|}
 \\
 \end{tabular}
-\end{exercise}
 
 \hspace{1cm}
 
-For some of the problems, I do care about the number answer. Then you will have to first calculate the answer and then input the output into the answer box. The problem will specifically ask you to complete the "calculations".
-
-\section*{Some Basic Theorems and Definitions for Counting}
-
-We assume your knowledge of sets and hence skip them here.
-
-\begin{theorem}[Addition Rule]
-Suppose A and B are \textbf{mutually exclusive} or \textbf{mutually disjoint}  events. Then the total number of outcomes is $|A\cup B|=|A|+|B|$
-\end{theorem}
-
-\begin{example}
-Suppose we roll a pair of dice. How many ways are there to get the total of 8 or 10?
-
-\begin{explanation}
-We define A as the event that the total is 8 and B as the event that the total is 10. Then 
-
-$$A=\{(2,6),~(3,5),~(4,4),~(5,3),~(6,2)\}$$
-$$B=\{(4,6),~(5,5),~(6,4)\}$$
-
-It is clear that $A\cap B=\emptyset$ as no pair can have the total of 8 and 10 at the same time.
-
-Our main event E is the set of all pairs of dice with a total of 8 or 10. We get $E=A\cup B$ and A and B are mutually exclusive or mutually disjoint. Hence, by addition rule, we get
-
-$$|A\cup B|=|A|+|B|=\answer{5}+\answer{3}=\answer{8}$$
-\end{explanation}
-
-\begin{remark}
-We may have an even A as the union of multiple mutually exclusive events $A_1,~ A_2, ~\ldots, A_k$. Then 
-$$|A|=|A_1|+|A_2|+\ldots+|A_k|.$$
-\end{remark}
-
-\begin{remark}
-If the events A and B are not necessarily disjoint, then 
-$$|A\cup B|=|A|+|B|-|A\cap B|$$
-\end{remark}
-\end{example}
-
-
 \begin{problem}
-From a group of 30 staff member, 10 will be sent to vacation by a lottery. 2 will go to Hawaii, 5 will go to Florida and 3 will go to Quebec.
+From a group of 30 staff member, 10 will be sent to vacation by a lottery. 
 
 \begin{enumerate}
-    \item The number of ways to select 10 lucky people is $\answer{\sage{m(10,[2,3,5])}}$.
-    \item Suppose also that each group will have a team leader who is in charge of fun. The number then is $\answer{\sage{m(10,[2,3,5])*factorial(2)*factorial(3)*factorial(5)}}$.    
+    \item The number of ways to select the lucky 10 folks is $\answer{\sage{c(30,10)}}$. 
+    \item Suppose also that 2 will go to Hawaii, 5 will go to Florida and 3 will go to Quebec. The number  is $\answer{\sage{c(30,10)*m(10,[2,3,5])}}$.
+    \item Suppose also that each group will have a team leader who is in charge of fun. The number then is $\answer{\sage{c(30,10)*m(10,[2,3,5])*2*3*5}}$.    
 \end{enumerate}
 \end{problem}
 \begin{problem}
@@ -167,6 +127,20 @@ We count the number of non-negative integer triples $(i,j,k)$ such that $i+j+k=1
 \end{explanation}
 \end{problem}
 
+\begin{problem}
+How many permutations are there of the letters in the word
+  \verb!BOOKKEEPER! in which the two \verb!O!s and the two
+\verb!K!s are adjacent (but not necessarily next to each other).
+\begin{hint}
+Treat \verb!OO! and \verb!KK! as single letters.
+\end{hint}
+$$
+\answer{
+\sage{m(8,[1,1,1,3,1,1])
+}
+}
+$$
+\end{problem}
 
 \begin{problem} 
 At a small zoo, you are in charge of a lion, a tiger, a cheetah, and panther, and a jaguar, all in separate cages. Overnight the cages are opened by vandals, and the cats all escape. The next morning you put food in the empty cages and sure enough, the cats settle down, one per cage, for breakfast. All permutations are equally likely. What is the number of ways that one cat has returned to its original cage while two pairs have swapped cages? 
@@ -203,7 +177,7 @@ pizzas can you construct?
 \begin{problem} 
 
 How many distinct strings can you make out of the characters
-in the word ``potato-soup''?   (Include the hyphen as a character.)
+in the word ``potato-soup''?   (Include the hyphen ``\verb!-!'' as a character.)
 \begin{explanation}
 $$\answer{\sage{m(11,[2,3,2,1,1,1,1])} }$$
 \end{explanation}
@@ -246,7 +220,7 @@ If you start
 at a road intersection and wish to get to the intersection 5 miles to the
 south and 7 miles west, how many different routes could you take?
 \begin{hint}
-Suppose you are writing a word using the letters ``s'' and ``w''. What is the length of this word? Can you calculate all possible words if you know the length?
+Suppose you are writing a word using the letters ``s'' and ``w''. What is the length of this word? How often they must be repeated. Can you calculate all possible words if you know the length of the word and the frequencies of letters?
 \end{hint}
 \begin{explanation}
 $$\answer{\sage{binomial(12,5)} }$$

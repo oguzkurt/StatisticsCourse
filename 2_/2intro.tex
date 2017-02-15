@@ -1,0 +1,212 @@
+\documentclass{ximera}
+\input{../preamble.tex}
+\title{Counting and Probability 1}
+\author{Oguz Kurt}
+
+\begin{document}
+\begin{abstract}
+We introduce the syntax and some key theorems we discussed in class. No examples or proofs will be presented here since we have done those in class.
+\end{abstract}
+\maketitle
+
+\begin{sagesilent}
+def c(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)
+    else:
+        return "error"
+
+def p(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)*factorial(k)
+    else:
+        return "error"
+def m(n,mylist):
+    l=len(mylist)
+    return factorial(n)/(prod([factorial(mylist[i]) for i in range(l)]))
+\end{sagesilent}
+
+\section*{Syntax}
+In this HW, you are expected to solve problems of counting. Before we start, here is some help as to how to answer the problems. You can of course calculate the answer using a calculator and enter it to the corresponding answer box but there is an easier way for you. 
+
+\hspace{0.5cm}
+
+\begin{exercise} This table is to help you. Do not calculate the answer in your mind or using a calculator. Instead, use the syntax and let the answer box do it for you:
+
+\begin{tabular}{c|c|c|c}
+Operation & Syntax & Example & Answer 
+\\
+\hline
+$a+b$ & {\color{red} \verb|a+b|} & $3+5$ & $\answer{\sage{3+5} }$
+\\
+\hline
+$a- b$ & {\color{red} \verb|a-b|} & $3-5$ & $\answer{\sage{3-5} }$
+\\
+\hline
+$a\cdot b$ & {\color{red} \verb|a*b| } & $3\times 5$ & $\answer{\sage{3*5} }$
+\\
+\hline
+$a/b=\frac{a}{b}$ & {\color{red} \verb|a/b|} & $\frac{3}{5}$ & $\answer{\sage{3/5} }$
+\\
+\hline
+$a^b$ & {\color{red} \verb|a**b| or \verb|3^5|} & $3^5$ & $\answer{\sage{3**5} }$
+\\
+\hline
+$\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} & $\sqrt{5}$ & $\answer{\sage{sqrt(5)} }$
+\\
+\hline
+$a!$ & {\color{red} \verb|a!|} & $50!$ & $\answer{\sage{factorial(50)} }$
+\\
+\hline
+$\binom{a}{b}$ & {\color{red} \verb|a!/(b!*(a-b)!)|} & $\binom{50}{45}$ & $\answer{\sage{binomial(50,45)}}$ 
+\\
+\hline
+$P_k^n$ & {\color{red} \verb|a!/(a-b)!|} & $P_{30}^{100}$ & $\answer{\sage{binomial(100,30)*factorial(30)} }$ 
+\\
+\end{tabular}
+\end{exercise}
+
+\hspace{1cm}
+
+
+\section*{Some Basic Theorems and Definitions for Counting}
+
+We assume your knowledge of sets and hence skip them here.
+
+\begin{theorem}[Addition Rule]
+Suppose A and B are \textbf{mutually exclusive} or \textbf{mutually disjoint}  events. Then the total number of outcomes is $|A\cup B|=|A|+|B|$
+\end{theorem}
+
+\begin{example}
+Suppose we roll a pair of dice. How many ways are there to get the total of 8 or 10?
+
+\begin{explanation}
+We define A as the event that the total is 8 and B as the event that the total is 10. Then 
+
+$$A=\{(2,6),~(3,5),~(4,4),~(5,3),~(6,2)\}$$
+$$B=\{(4,6),~(5,5),~(6,4)\}$$
+
+It is clear that $A\cap B=\emptyset$ as no pair can have the total of 8 and 10 at the same time.
+
+Our main event E is the set of all pairs of dice with a total of 8 or 10. We get $E=A\cup B$ and A and B are mutually exclusive or mutually disjoint. Hence, by addition rule, we get
+
+$$|A\cup B|=|A|+|B|=\answer{5}+\answer{3}=\answer{8}$$
+\end{explanation}
+
+\begin{remark}
+We may have an even A as the union of multiple mutually exclusive events $A_1,~ A_2, ~\ldots, A_k$. Then 
+$$|A|=|A_1|+|A_2|+\ldots+|A_k|.$$
+\end{remark}
+
+\begin{remark}
+If the events A and B are not necessarily disjoint, then 
+$$|A\cup B|=|A|+|B|-|A\cap B|$$
+\end{remark}
+\end{example}
+
+
+\begin{theorem}[Multiplication Rule]
+Suppose an event A occurs m times and and event B occurs n times independently\footnote{We will discuss independence further}. Then number of ways of both events occurring is $|A|\times |B|=m\times n$.
+\end{theorem}
+
+\begin{remark}
+One can see independence as the ability to think of the two events sequential in time or happening in different locations. Maybe it is best to think of it as the ability to visualize them as two separate set of experiments even when that is not the case. Though independence is a lot more complicated than that, such a thought process helps one understand it further.
+
+One great example two events A and B forming a Cartesian product which is basically all pairs $(a,b)$ such that a is selected from A and b is selected from B.
+$$A\times B=\left\{ (a,b):~~ a \text{ in } A,~ b \text{ in } B \right\}$$
+
+We know that $|A\times B|=|A|\times |B|$. 
+
+Let me repeat myself: \textbf{``Independence is not the same thing as using cartesian product but it helps immensely in visualization.''}
+\end{remark}
+
+
+\begin{example}
+Suppose we roll a pair of dice. Instead of this single experiment S, we can think of two copies of the same experiment $A_1,~A_2$ of rolling a single die. Clearly, the outcomes of rolling the first and the second dice are independent. In this case:
+
+$$A_1=A_2=\{1,2,3,4,5,6\} \text{ and } S=A_1\times A_2.$$
+
+So, $|S|=6\times 6=36$.
+\end{example}
+
+\begin{definition}[Factorial]
+Given $n>0$, \verb!n-factorial!, denoted by $n!$, is the product of the positive integers $1,2,\ldots, n$.
+
+$$n!=n\times (n-1) \times (n-2) \times \ldots \times 2\times 1$$
+
+We also define $0!=1$ for conventional reasons.
+\end{definition}
+
+\begin{example}
+$5!=5\cdot 4 \cdot 3 \cdot 2 \cdot 1=\sage{factorial(5)}$
+\end{example}
+\begin{theorem}[Permutations -- Ordered lists]
+Number of k-letter words using distinct letters from an n-element alphabet is $P_k^n=P(n,k)=\frac{n!}{(n-k)!}$
+\end{theorem}
+
+\begin{example}
+Number of ways to select a president, a vice president, a treasurer, a secretary and a member for the student council from among 30 students is  
+$$
+P(30,5)
+=
+\frac{30!}{25!}
+=
+\sage{p(30,5)}
+$$ 
+\end{example}
+
+
+\begin{theorem}[Combinations -- Unordered lists]
+Number of k-element subsets of an n-element set is $\binom{n}{k}=\frac{n!}{k!(n-k)!}$
+\end{theorem}
+
+
+\begin{example}
+Number of ways to select 10 students out of 30 for a trip to Hawaii is  
+$$
+\binom{30}{10}
+=
+\frac{30!}{10!20!}
+=
+\sage{c(30,10)}
+$$ 
+\end{example}
+
+\begin{theorem}[Permutations (ordered lists) with repetition]
+Number of n-letter words created from an alphabet with k letters $\{x_1,x_2,\ldots, x_k\}$ using each letter $x_i$ exactly $m_i$ times is 
+$$\frac{n!}{m_1!m_2!\ldots m_k!}=\binom{n}{m_1}\cdot \binom{n-m_1}{m_2}\cdot \binom{n-m_1-m_2}{m_3}\cdot \ldots \cdot \binom{n-m_1-m_2-\ldots -m_{k-1}}{m_k}$$ 
+where $n=m_1+m_2+\ldots+m_k$.
+\end{theorem}
+
+\begin{example}
+Number of ways to write a word using letters \verb!A! 5 times, \verb!V! 2 times, \verb!E! 4 times, \verb!C! 3 times is 
+$$
+\frac{(5+2+4+3)!}{5!2!4!3!}
+=
+\frac{14!}{5!2!4!3!}
+=
+\sage{m(14,[5,2,4,3])}
+$$ 
+\end{example}
+
+\begin{theorem}[Combinations (unordered lists) with repetition]
+Number of ways to place n identical objects into k boxes  is 
+$$
+\binom{n+k-1}{k-1}=\binom{n+k-1}{n}
+$$
+\end{theorem}
+
+\begin{example}
+Suppose a wending machine carries 10 items and at least 20 of each item is present. Moreover, each item costs \$1. If you have \$20, you can purchase 20 items (not necessarily different). Number of ways to purchase \$20 worth of items is 
+$$
+\binom{20+10-1}{20}
+=
+\binom{29}{20}
+=
+\sage{binomial(29,20)}
+.
+$$
+\end{example}
+
+
+\end{document}
