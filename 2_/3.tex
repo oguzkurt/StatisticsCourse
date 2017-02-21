@@ -82,14 +82,6 @@ k=var('k')
 \end{explanation}
 \end{problem}
 
-\begin{problem}
-\begin{sagesilent}
-reset('p')
-reset('k')
-\end{sagesilent}
-
-$\answer{\sage{k!/5!/(k-5)!*p^5*(1-p)^{k-5}}}$
-\end{problem}
 
 \begin{problem}
 The probability that a particular type of rifle will fire is $p$. We test the rifle $k$ times.
@@ -106,6 +98,15 @@ l=var('l')
 \end{explanation}
 \end{problem}
 
+\begin{problem}
+\begin{sagesilent}
+reset('p')
+reset('k')
+\end{sagesilent}
+\begin{prompt}
+$\answer[given]{\sage{binomial(k,5)*p^5*(1-p)^(k-5)}}$
+\end{prompt}
+\end{problem}
 \end{document}
 
 
