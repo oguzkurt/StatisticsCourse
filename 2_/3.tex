@@ -68,14 +68,19 @@ $P_k^n$ & {\color{red} \verb|a!/(a-b)!|}
 
 \begin{problem}
 The probability that a particular type of rifle will fire is $p$. We test the rifle $k$ times.
+\begin{enumerate}
+\item What is the probability it will fire in every one of $k$ independent trials? 
+\begin{explanation}
 \begin{sagesilent}
 p=var('p')
 k=var('k')
 \end{sagesilent}
-\begin{enumerate}
-\item What is the probability it will fire in every one of $k$ independent trials? 
-\begin{explanation}
+
 Because the trials are independent, the probability of each success is $\answer{\sage{p}}$.
+\begin{sagesilent}
+p=var('p')
+k=var('k')
+\end{sagesilent}
 \begin{equation*} 
 \Pr(k \text{ successes} ) = \answer{\sage{p^k}}
 \end{equation*}
@@ -84,7 +89,10 @@ Because the trials are independent, the probability of each success is $\answer{
 
 \item What is the probability it will fire exactly $5$ times in $k$ independent trials? 
 \begin{explanation}
-Because the trials are independent, the probability of each success is $\answer{\sage{p}}$.
+\begin{sagesilent}
+p=var('p')
+k=var('k')
+\end{sagesilent}
 \begin{equation*} 
 \Pr(5 \text{ successes in  } k \text{ trials } ) = \answer{\sage{binomial(k,5)*p^5*(1-p)^(k-5)}} 
 \end{equation*}
