@@ -83,10 +83,6 @@ The probability that a particular type of rifle will fire is $0.8$. We test the 
 What is the probability it will fire exactly $5$ times in $50$ independent trials? 
 
 \begin{explanation}
-\begin{sagesilent}
-q=var('q')
-l=var('l')
-\end{sagesilent}
 \begin{equation*} 
 \Pr(5 \text{ successes in  } 50 \text{ trials } ) = \answer{\sage{binomial(50,5)*0.8^5*(1-0.8)^(50-5)}} 
 \end{equation*}
@@ -124,12 +120,7 @@ Using these two facts:
 
 \begin{problem}
 
-Identical twins come from the same egg and hence are of the same sex. Fraternal twins have a 50-50 chance of being the same sex. Among twins the probability of a fraternal set is $r$ and an identical set is $s = 1 - r$. If the next set of twins are of the same sex, what is the probability they are identical? Please, give your answer in the variable $s$ only.
-\begin{sagesilent}
-r=var('r')
-s=var('s')
-r=1-s
-\end{sagesilent}
+Identical twins come from the same egg and hence are of the same sex. Fraternal twins have a 50-50 chance of being the same sex. Among twins the probability of a fraternal set is $p$ and an identical set is $q = 1 - p$. If the next set of twins are of the same sex, what is the probability they are identical? Please, give your answers in the variable $p$ only.
 \begin{hint}
 Let's use ``Twins'' as a categorical variable that may either be ``Identical'' or ``Fraternal''. You first might want to complete the table and then might want to use Bayes' Theorem. 
 \end{hint}
@@ -138,15 +129,15 @@ Let's use ``Twins'' as a categorical variable that may either be ``Identical'' o
 \begin{tabular}{c|c|c|c}
 Twins &	$\Pr$(Twins) &	$\Pr$(same sex $|$ Twins)&	$\Pr$(Twins)$\Pr$[same sex $|$ Twins] \\
 \hline
-Identical &	$s$ &	$\answer{1}$ &	$\answer{\sage{s}}$ \\
+Identical &	$1-p$ &	$\answer{1}$ &	$\answer{1-p}$ \\
 \hline
-Fraternal &	$r=1-s$	& $\answer{\sage{1/2}}$ &	$\answer{\sage{(1-s)/2}}$ 
+Fraternal &	$p$	& $\answer{1/2}$ &	$\answer{p/2}$ 
 \end{tabular}
 
 \begin{eqnarray*} 
 \Pr(\text{Identical } | \text{same sex}) &=& \frac{\Pr(\text{same sex}|\text{Identical} )\cdot \Pr(\text{Identical})} {\Pr(\text{same sex}|\text{Identical})\cdot \Pr(\text{Identical})+\Pr(\text{same sex}|\text{Fraternal})\cdot\Pr(\text{Fraternal})} \\ 
 &=&%\frac{q}{q+\frac{p}{2}} = \frac{2q}{2q+p} =
-\answer{\sage{2s/(1+s)}}\\ 
+\answer{\frac{2-2p}{2-p}}\\ 
 \end{eqnarray*}
 \end{prompt}
 \end{problem}
@@ -216,7 +207,7 @@ Let $R_1$ be the event that the ball transferred is RED and $B_1$ be the event t
 \end{hint}
 
 \begin{prompt}
-$$\Pr(R_2)=\answer{\sage{7/10*(5!/2!/3!)/(10!/2!/8!)+3/10*(4!/2!/2!)/(10!/2!/8!)}}
+$$\Pr(R_2)=\answer{\sage{7/10*binomial(5,2)/binomial(10,2)+3/10*binomial(4,2)/binomial(10,2)}}
 $$
 \end{prompt}
 
