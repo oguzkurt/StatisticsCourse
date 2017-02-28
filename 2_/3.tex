@@ -70,22 +70,17 @@ $P_k^n$ & {\color{red} \verb|a!/(a-b)!|}
 The probability that a particular type of rifle will fire is $0.8$. We test the rifle $100$ times.
 What is the probability it will fire in every one of $100$ independent trials? 
 
-\begin{explanation}
-\begin{sagesilent}
-p=var('p')
-k=var('k')
-\end{sagesilent}
+\begin{prompt}
 \begin{equation*} 
-\Pr(k \text{ successes} ) = \answer{\sage{0.8^100}}
+\Pr(100 \text{ successes} ) = \answer{\sage{0.8^100}}
 \end{equation*}
-
-\end{explanation}
+\end{prompt}
 \end{problem}
 
 
 \begin{problem}
-The probability that a particular type of rifle will fire is $0.8$. We test the rifle $100$ times.
-What is the probability it will fire exactly $5$ times in $100$ independent trials? 
+The probability that a particular type of rifle will fire is $0.8$. We test the rifle $50$ times.
+What is the probability it will fire exactly $5$ times in $50$ independent trials? 
 
 \begin{explanation}
 \begin{sagesilent}
@@ -93,7 +88,7 @@ q=var('q')
 l=var('l')
 \end{sagesilent}
 \begin{equation*} 
-\Pr(5 \text{ successes in  } \ell \text{ trials } ) = \answer{\sage{binomial(100,5)*0.8^5*(1-0.8)^(100-5)}} 
+\Pr(5 \text{ successes in  } 50 \text{ trials } ) = \answer{\sage{binomial(50,5)*0.8^5*(1-0.8)^(50-5)}} 
 \end{equation*}
 \end{explanation}
 \end{problem}
@@ -101,18 +96,23 @@ l=var('l')
 
 
 \begin{problem}
-A die is loaded in such a way that the probability of the face with $j$ dots turning up is proportional to $j$ for $j = 1,2, \ldots,6$. What is the probability, in one roll of the die, that an even number of dots will turn up? 
-\begin{hint}
 \begin{sagesilent}
 j=var('j')
 \end{sagesilent}
+A die is loaded in such a way that the probability of the face with $j$ dots turning up is proportional to $j$ for $j = 1,2, \ldots,6$. What is the probability, in one roll of the die, that an even number of dots will turn up? 
+\begin{hint}
 We let the probability of the face with 1 dot turning up is $p$,
-then we get $p+2p+\cdots+6p=1$ and $p=\answer{\sage{1/21}}$.
-Thus, probability that the side with j-dots turns up is $p_j =\answer{\sage{1/21*j}}$.
+then we get $p+2p+\cdots+6p=1$.
+Thus, probability that the side with j-dots turns up is $p_j$.
 You can complete the problem by using Addition Rule.
 \end{hint}
 
 \begin{prompt}
+\begin{itemize}
+    \item Probability of a dot turning up is $p=\answer{\sage{1/21}}$.
+    \item Probability of a side with j-dots turning up is $p_j =\answer{\sage{1/21*j}}$.
+\end{itemize}
+Using these two facts:
 \begin{equation*}
 \Pr(X=2, 4, \text{or } 6 ) =%d\frac{2}{21}+\frac{4}{21}+\frac{6}{21} = 
 \answer{\frac{4}{7}}
@@ -131,25 +131,22 @@ s=var('s')
 r=1-s
 \end{sagesilent}
 \begin{hint}
-Let's use ``Twins'' as a categorical variable that may either be ``Identical'' or ``Fraternal''. Here is the information given in the first three columns:
-
-\begin{tabular}{c|c|c|c}
-Twins &	$\Pr$(Twins) &	$\Pr$(same sex $|$ Twins)&	$\Pr$(Twins)$\Pr$[same sex $|$ Twins] \\
-\hline
-Identical &	$s$ &	$\answer{1}$ &	$\answer{s}$ \\
-\hline
-Fraternal &	$r=1-s$	& $\answer{\frac{1}{2}}$ &	$\answer{\sage{(1-s)/2}}$ 
-\end{tabular}
-
-We want to use Bayes Theorem. 
-
+Let's use ``Twins'' as a categorical variable that may either be ``Identical'' or ``Fraternal''. You first might want to complete the table and then might want to use Bayes' Theorem. 
 \end{hint}
 
 \begin{prompt}
+\begin{tabular}{c|c|c|c}
+Twins &	$\Pr$(Twins) &	$\Pr$(same sex $|$ Twins)&	$\Pr$(Twins)$\Pr$[same sex $|$ Twins] \\
+\hline
+Identical &	$s$ &	$\answer{1}$ &	$\answer{\sage{s}}$ \\
+\hline
+Fraternal &	$r=1-s$	& $\answer{\sage{1/2}}$ &	$\answer{\sage{(1-s)/2}}$ 
+\end{tabular}
+
 \begin{eqnarray*} 
 \Pr(\text{Identical } | \text{same sex}) &=& \frac{\Pr(\text{same sex}|\text{Identical} )\cdot \Pr(\text{Identical})} {\Pr(\text{same sex}|\text{Identical})\cdot \Pr(\text{Identical})+\Pr(\text{same sex}|\text{Fraternal})\cdot\Pr(\text{Fraternal})} \\ 
 &=&%\frac{q}{q+\frac{p}{2}} = \frac{2q}{2q+p} =
-\answer{\frac{2s}{1+s}}\\ 
+\answer{\sage{2s/(1+s)}}\\ 
 \end{eqnarray*}
 \end{prompt}
 \end{problem}
@@ -177,11 +174,12 @@ We would like to make use of two facts here:
 \begin{problem}
 A box contains four 10 bills, six 5 bills, and two 1 bills. Two bills are taken at random from the box without replacement. What is the probability that both bills will be of the same kind? 
 \begin{hint}
-The choices are (10,10),(5,5),(1,1) but each has a different frequency. This implies, the probabilities are different. First calculate the probabilities below and then add them as your final answer.
-
-$\Pr(10,10)=\answer{\sage{binomial(4,2)/binomial(12,2)}}$, $\Pr(5,5)=\answer{\sage{binomial(6,2)/binomial(12,2)}}$, 
-$\Pr(1,1)=\answer{\sage{binomial(2,2)/binomial(12,2)}}$.
+The choices are (10,10),(5,5),(1,1) but each has a different frequency. This implies, the probabilities are different. First calculate these probabilities and then add them as your final answer.
 \end{hint}
+
+%$\Pr(10,10)=\answer{\sage{binomial(4,2)/binomial(12,2)}}$, %$\Pr(5,5)=\answer{\sage{binomial(6,2)/binomial(12,2)}}$, 
+%$\Pr(1,1)=\answer{\sage{binomial(2,2)/binomial(12,2)}}$.
+
 
 \begin{prompt}
 $$ 
@@ -195,12 +193,9 @@ $$
 Machine $X$ has 3 independent components, two of which fail with probability $1/5$ and one which fails with probability 1/2. The machine operates so long as at least two parts work. A second machine $Y$ has only one component which fails with probability $1/5$. Let $\Pr[X]$ and $\Pr[Y]$ be the probabilities that machines $X$ and $Y$ fail, respectively. What is the relationship between $\Pr[X]$ and $\Pr[Y]$? 
 
 \begin{hint}
-$\Pr[Y]=1/5$. We need to calculate $\Pr[X]$ as a function of $p$.
-\begin{eqnarray*}
-\Pr[X]&=&\Pr[\text{all 3 fail}]+\Pr[\text{first two machines fail}]+\Pr[\text{One of first two and 3rd fail}] \\
-&=& \answer{\sage{1/5^2/2}}+\answer{\sage{1/5^2/2}}+\answer{\sage{2*1/5*(1-1/5)/2}} \\
-&=& \answer{1/5}
-\end{eqnarray*}
+$$
+\Pr[X]=\Pr[\text{all 3 fail}]+\Pr[\text{first two machines fail}]+\Pr[\text{One of first two and 3rd fail}] 
+$$
 \end{hint}
 
 \begin{prompt}
@@ -221,7 +216,7 @@ Let $R_1$ be the event that the ball transferred is RED and $B_1$ be the event t
 \end{hint}
 
 \begin{prompt}
-$$\Pr(R_2)=\answer{\sage{7/10*5/10+3/10*4/10}}
+$$\Pr(R_2)=\answer{\sage{7/10*(5!/2!/3!)/(10!/2!/8!)+3/10*(4!/2!/2!)/(10!/2!/8!)}}
 $$
 \end{prompt}
 
@@ -253,8 +248,11 @@ $$\Pr=\answer{\sage{binomial(4,3)*binomial(48,10)/binomial(52,13)}}.$$
 \begin{problem}
 A population consists of 20 percent zeroes, 40 percent ones, and 40 percent twos. A random sample $X_1$, $X_2$ of size 2 is selected with replacement. What is $\Pr[|X_2-X_1|=1]$?
 \begin{hint}
-We want to calculate probabilities of all pairs $(X_1,X_2)$ such that $|X_2-X_1|=1$. Let's use the following table:
+We want to calculate probabilities of all pairs $(X_1,X_2)$ such that $|X_2-X_1|=1$. Let's use the table format!
+\end{hint}
 
+
+\begin{prompt}
 $$
 \begin{array}{c|c|c|c}
   & 0 & 1 & 2 \\
@@ -265,9 +263,7 @@ $$
 2 &\answer{0.08} & \answer{0.16} & \answer{0.16} \\
 \end{array}
 $$
-\end{hint}
 
-\begin{prompt}
 $$\Pr=\answer{\sage{0.08+0.08+0.16+0.16}}$$
 \end{prompt}
 
@@ -305,18 +301,22 @@ $$\Pr=\answer{\sage{(binomial(3,2)+binomial(3,2)*(3+1-2))/binomial(10,2)}}$$
 \begin{problem}
  Events $S$ and $T$ have probabilities $\Pr[S] = \Pr[T] =\frac{1}{3}$ and $\Pr[S|T] =\frac{1}{6} $. What is $\Pr[S^c\cap T^c]$?
 \begin{hint}
-By using conditional probability, you can calculate $\Pr[S|T]=\frac{\Pr[S \cap T]}{\Pr[T]}$. Thus 
-$$
-\Pr[S \cap T]=\Pr[T]\Pr[S|T]=\answer{\sage{1/3*1/6}}
-$$ 
-We know that $S^c\cap T^c=(S\cup T)^c$. You can now use the complement rule (probability of the complement of an event) and addition rule (probability of union of two event) with the help of a Venn Diagram, to finish the problem.
+    \item Use conditional probability, you can calculate $\Pr[S|T]=\frac{\Pr[S \cap T]}{\Pr[T]}$.     \item We know that $S^c\cap T^c=(S\cup T)^c$. 
+    \item You can use the complement rule (probability of the complement of an event) and addition rule (probability of union of two event) with the help of a Venn Diagram, to finish the problem.
 \end{hint}
 
 \begin{prompt}
 $$
+\Pr[S \cap T]=\Pr[T]\Pr[S|T]=\answer{\sage{1/3*1/6}}
+$$ 
+
+$$
+\Pr[S \cup T]=\answer{\sage{1/3+1/3-1/3*1/6}}
+$$ 
+
+$$
 \Pr[S^c \cap T^c]=\Pr[(S \cup T)^c]=\answer{\sage{1-1/3-1/3+1/18}}
 $$
-
 \end{prompt}
 
 \end{problem}
@@ -335,25 +335,20 @@ $$\Pr(S)=\answer{\sage{1/3-1/9}}$$
 \begin{problem}
 A card is drawn at random from an ordinary deck of 52 cards and replaced. This is done a total of 5 independent times. What is the conditional probability of drawing the ace of spades exactly 4 times, given that this ace is drawn at least 4 times?
 \begin{hint}
-First, calculate:
-$$
-\Pr(\text{ Exactly 4 })=\answer{\sage{binomial(5,4)*(1/52)^4*(51/52)^1}}
-$$
-
-$$
-\Pr(\text{ Exactly 5 })=\answer{\sage{binomial(5,5)*(1/52)^5*(51/52)^0}}
-$$
-
-Now, you need to calculate the conditional probability!
+    \item We need to use conditional probability.
+    \item For that, we first need to calculate 
+$
+\Pr(\text{ Exactly 4 })$
+and
+$
+\Pr(\text{ Exactly 5 })
+$
 \end{hint}
 
 \begin{prompt}
 $$
 \Pr(\text{ Exactly 4 } | \text{ At least 4 })
 =
-%1-\Pr(\text{ Exactly 5 Aces } | \text{ At least 4 Aces })
-%\\
-%&=&
 \answer{
 \sage{(binomial(5,4)*(1/52)^4*(51/52)^1)/(binomial(5,4)*(1/52)^4*(51/52)^1+1/52^5)}
 }
@@ -399,6 +394,7 @@ Calculate the probability that someone does have breast cancer given that the ma
 \begin{hint}
 We are testing the reliability of a mammogram test in this problem. Let's use $C$ for women with cancer,  $NC$ as the its complement. Similarly, lets use $M+$ for positive mammogram results (detects cancer) and $M-$ for negative results. We wish to calculate $\Pr(~C~|~M+~)$ using Bayes' Formula.
 \end{hint}
+
 $$\Pr(~C~|~M+~)
 =\answer{\sage{(0.01*0.8)/(0.01*0.8+0.99*0.096)}}
 $$
