@@ -98,51 +98,322 @@ l=var('l')
 \end{explanation}
 \end{problem}
 
-\end{document}
+
+
 \begin{problem}
+A die is loaded in such a way that the probability of the face with $j$ dots turning up is proportional to $j$ for $j = 1,2, \ldots,6$. What is the probability, in one roll of the die, that an even number of dots will turn up? 
+\begin{hint}
 \begin{sagesilent}
-p=var('p')
-k=var('k')
+j=var('j')
 \end{sagesilent}
+We let the probability of the face with 1 dot turning up is $p$,
+then we get $p+2p+\cdots+6p=1$ and $p=\answer{\sage{1/21}}$.
+Thus, probability that the side with j-dots turns up is $p_j =\answer{\sage{1/21*j}}$.
+You can complete the problem by using Addition Rule.
+\end{hint}
+
 \begin{prompt}
-$\answer[given]{\sage{binomial(k,5)*p^5*(1-p)^(k-5)}}$
+\begin{equation*}
+\Pr(X=2, 4, \text{or } 6 ) =%d\frac{2}{21}+\frac{4}{21}+\frac{6}{21} = 
+\answer{\frac{4}{7}}
+\end{equation*}
+
 \end{prompt}
 \end{problem}
-\end{document}
 
 
 \begin{problem}
-How many ways are there to select 5 spades, 4 hearts, 3 diamonds, and 1 club to make a bridge player's hand?
 
-\begin{explanation}
-   Each suit has $\answer{13}$ cards. So, the answer is 
-   $$\answer{\sage{c(13,5)*c(13,4)*c(13,3)*c(13,1)}}.$$
-\end{explanation}
+Identical twins come from the same egg and hence are of the same sex. Fraternal twins have a 50-50 chance of being the same sex. Among twins the probability of a fraternal set is p and an identical set is $q = 1 - p$. If the next set of twins are of the same sex, what is the probability they are identical? Please, give your answer in the variable $q$ only.
+\begin{sagesilent}
+p=var('p')
+q=var('q')
+\end{sagesilent}
+\begin{hint}
+Let's use ``Twins'' as a categorical variable that may either be ``Identical'' or ``Fraternal''. Here is the information given in the first three columns:
+
+\begin{tabular}{c|c|c|c}
+Twins &	$\Pr$(Twins) &	$\Pr$(same sex $|$ Twins)&	$\Pr$(Twins)$\Pr$[same sex $|$ Twins] \\
+\hline
+Identical &	$q$ &	$\answer{1}$ &	$\answer{q}$ \\
+\hline
+Fraternal &	$p$	& $\answer{\frac{1}{2}}$ &	$\answer{\frac{p}{2}}$ 
+\end{tabular}
+
+We want to use Bayes Theorem. 
+
+\end{hint}
+
+\begin{prompt}
+\begin{eqnarray*} 
+\Pr(\text{Identical } | \text{same sex}) &=& \frac{\Pr(\text{same sex}|\text{Identical} )\cdot \Pr(\text{Identical})} {\Pr(\text{same sex}|\text{Identical})\cdot \Pr(\text{Identical})+\Pr(\text{same sex}|\text{Fraternal})\cdot\Pr(\text{Fraternal})} \\ 
+&=&%\frac{q}{q+\frac{p}{2}} = \frac{2q}{2q+p} =
+\answer{\frac{2q}{1+q}}\\ 
+\end{eqnarray*}
+\end{prompt}
 \end{problem}
 
 
 \begin{problem}
-Forty equally skilled teams play a tournament in which every team plays every other team exactly once, and there are not ties.
+Events $A$ and $B$ are independent, events $A$ and $C$ are mutually exclusive, and events $B$ and $C$ are independent. If $\Pr[A]= \frac{1}{2}$ , $\Pr[B]= \frac{1}{4}$ , and $\Pr[C]= \frac{1}{8}$ , what is $\Pr[A \cup B \cup C]$? 
+\begin{hint}
+We would like to make use of two facts here:
+\begin{itemize}
+    \item If V and W are independent, then $\Pr(V\cap W)=\Pr(V)\cdot \Pr(W) $.
+    \item $\Pr(A\cup B\cup C)=\Pr(A)+\Pr(B)+\Pr(C)-\Pr(A\cap B)-\Pr(A\cap C)-\Pr(B\cap C) +\Pr(A\cap B \cap C)$ which is the generalized Addition Principle for three events.
+\end{itemize}
+\end{hint}
 
-\begin{enumerate}
-\item  How many different games were played?
-$$
-\answer{\sage{c(40,2)}}
-$$
-\item  How many different possible outcomes for these games are
-there?
-%Each of the 780 games has two possible outcomes, so the total number of different outcomes is
-$$
-\answer{2}^{\answer{780}}
-$$
-\item  How many different ways are there for each team to win a different number of games?
+\begin{prompt}
+\begin{equation*}
+\Pr(A\cup B \cup C ) = \answer{\frac{23}{32}} 
+\end{equation*}
 
-%If each team wins a different number of games, this corresponds to a unique ordering of the teams.There are 
-$$
-\answer{\sage{factorial(40)}}
+\end{prompt}
+\end{problem}
+
+
+\begin{problem}
+A box contains four 10 bills, six 5 bills, and two 1 bills. Two bills are taken at random from the box without replacement. What is the probability that both bills will be of the same kind? 
+\begin{hint}
+The choices are (10,10),(5,5),(1,1) but each has a different frequency. This implies, the probabilities are different. First calculate the probabilities below and then add them as your final answer.
+
+$\Pr(10,10)=\answer{\sage{binomial(10,2)/binomial(12,2)}}$, $\Pr(5,5)=\answer{\sage{binomial(5,2)/binomial(12,2)}}$, 
+$\Pr(1,1)=\answer{\sage{binomial(2,2)/binomial(12,2)}}$.
+\end{hint}
+
+\begin{prompt}
 $$ 
-%such orderings.
-\end{enumerate}
+\Pr(\text{two of the same kind}) =\answer{\sage{(binomial(10,2)+binomial(5,2)+binomial(2,2))/(binomial(12,2))}}
+$$
+\end{prompt}
+\end{problem}
+
+
+\begin{problem}
+Machine $X$ has 3 independent components, two of which fail with probability $p$ and one which fails with probability .5. The machine operates so long as at least two parts work. A second machine $Y$ has only one component which fails with probability $p$. Let $\Pr[X]$ and $\Pr[Y]$ be the probabilities that machines $X$ and $Y$ fail, respectively. What is the relationship between $\Pr[X]$ and $\Pr[Y]$? 
+
+\begin{hint}
+$\Pr[Y]=p$. We need to calculate $\Pr[X]$ as a function of $p$.
+\begin{eqnarray*}
+\Pr[X]&=&\Pr[\text{all 3 fail}]+\Pr[\text{first two machines fail}]+\Pr[\text{One of first two and 3rd fail}] \\
+&=& \answer{\sage{p^2/2}}+\answer{\sage{p^2/2}}+\answer{\sage{2*p*(1-p)/2}} \\
+&=& \answer{p}
+\end{eqnarray*}
+\end{hint}
+
+\begin{prompt}
+        $$\frac{\Pr[X]}{\Pr[Y]}=\answer{1} $$
+\end{prompt}
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+Urn I contains 7 red and 3 black balls, and urn II contains 4 red and 5 black balls. After a randomly selected ball is transferred from urn I to urn II, 2 balls are randomly drawn from urn II without replacement. What is the probability that both balls drawn from urn II are red? 
+\begin{hint}
+Let $R_1$ be the event that the ball transferred is RED and $B_1$ be the event that the ball transferred is BLACK. Let $R_2$ be the event that both balls picked from Urn II are RED. We would like to calculate $\Pr(R_2)$. We must calculate it in two mutually exclusive cases: The transferred ball is RED or BLACK decides it. 
+\begin{eqnarray*} 
+\Pr(R_2)
+&=&\Pr(R_2\cap R_1)+\Pr(R_2\cap B_1) \\
+&=&\Pr(R_2 ~|~ R_1)\Pr(R_1)+\Pr(R_2~|~ B_1)\Pr(B_1) \\
+\end{eqnarray*} 
+\end{hint}
+
+\begin{prompt}
+$$\Pr(R_2)=\answer{\sage{7/10*5*4/10/9+3/10*4*3/10/9}}
+$$
+\end{prompt}
+
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+ Let $S$ and $T$ be independent events with $\Pr[S] = \Pr[T] \text{ and }\Pr[S \cup T] = \frac{1}{2}$.
+
+What is $\Pr[S]$? 
+
+\begin{prompt}
+$$\Pr[S]=\answer{\sage{1/sqrt(2)}}.$$
+\end{prompt}
+
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+If 13 cards are randomly chosen without replacement from an ordinary 52-card deck, what is the probability of obtaining exactly 3 aces? 
+
+\begin{prompt}
+$$\Pr=\answer{\sage{binomial(4,3)*binomial(48,10)/binomial(52,13)}}.$$
+\end{prompt}
+
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+A population consists of 20 percent zeroes, 40 percent ones, and 40 percent twos. A random sample $X_1$, $X_2$ of size 2 is selected with replacement. What is $\Pr[|X_2-X_1|=1]$?
+\begin{hint}
+We want to calculate probabilities of all pairs $(X_1,X_2)$ such that $|X_2-X_1|=1$. Let's use the following table:
+
+$$
+\begin{array}{c|c|c|c}
+  & 0 & 1 & 2 \\
+0 &\answer{0.04} & \answer{0.08} & \answer{0.08} \\
+\hline
+1 &\answer{0.08} & \answer{0.16} & \answer{0.16} \\
+\hline
+2 &\answer{0.08} & \answer{0.16} & \answer{0.16} \\
+\end{array}
+$$
+\end{hint}
+
+\begin{prompt}
+$$\Pr=\answer{\sage{0.08+0.08+0.16+0.16}}$$
+\end{prompt}
+
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+A family has five children. Assuming that the probability of a girl on each birth was $\frac{1}{2}$ and that the five births were independent, what is the probability the family has at least one girl, given that they have at least one boy? 
+\begin{hint}
+\begin{eqnarray*} X&=& \# \text{ boys } \\ 
+\Pr[X \not= 5 | X \not= 0 ] &=&\frac{\Pr[X=1,2,3\text{ or }4]}{\Pr[X=1,2,3,4 \text{ or }5]} \end{eqnarray*} 
+
+You might want to use the complement property of probability to finish this problem: $\Pr(A)=1-\Pr(A^c)$.
+\end{hint}
+
+\begin{prompt}
+$$\Pr[X \not= 5 | X \not= 0 ]=\answer{\sage{(1-(1/2)^5-(1/2)^5)/(1-(1/2)^5)}}.$$
+\end{prompt}
+
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+Mr. Flowers plants 10 rosebushes in a row. Eight of the bushes are white and two are red, and he plants them in random order. What is the probability that he will consecutively plant seven or more white bushes? 
+\begin{hint}
+\end{hint}
+
+\begin{prompt}
+$$\Pr=\answer{\sage{(binomial(3,2)+binomial(3,2)*2)/binomial(10,2)}}$$
+\end{prompt}
+
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+ Events $S$ and $T$ have probabilities $\Pr[S] = \Pr[T] =\frac{1}{3}$ and $\Pr[S|T] =\frac{1}{6} $. What is $\Pr[S^c\cap T^c]$?
+\begin{hint}
+By using conditional probability, you can calculate $\Pr[S|T]=\frac{\Pr[S \cap T]}{\Pr[T]}$. Thus 
+$$
+\Pr[S \cap T]=\Pr[T]\Pr[S|T]=\answer{\sage{1/3*1/6}}
+$$ 
+We know that $S^c\cap T^c=(S\cup T)^c$. You can now use the complement rule (probability of the complement of an event) and addition rule (probability of union of two event) with the help of a Venn Diagram, to finish the problem.
+\end{hint}
+
+\begin{prompt}
+$$
+\Pr[S^c \cap T^c]=\Pr[(S \cup T)^c]=\answer{\sage{1-1/3-1/3+1/18}}
+$$
+
+\end{prompt}
+
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+Suppose $Q$ and $S$ are independent events such that the probability that at least one of them occurs is $\frac{1}{3}$ and the probability that $Q$ occurs but $S$ does not occur is $\frac{1}{9}$. What is $\Pr[S]$?
+
+\begin{prompt}
+$$\Pr(S)=\answer{\sage{1/3-1/9}}$$
+\end{prompt}
+
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+A card is drawn at random from an ordinary deck of 52 cards and replaced. This is done a total of 5 independent times. What is the conditional probability of drawing the ace of spades exactly 4 times, given that this ace is drawn at least 4 times?
+\begin{hint}
+Calculate:
+$$
+\Pr(\text{ Exactly 4 })=\answer{\sage{binomial(5,4)*(1/52)^4*(51/52)^1}}
+$$
+
+$$
+\Pr(\text{ Exactly 5 })=\answer{\sage{binomial(5,5)*(1/52)^5*(51/52)^0}}
+$$
+
+Now, you need to calculate the conditional probability!
+\end{hint}
+
+\begin{prompt}
+$$
+\Pr(\text{ Exactly 4 } | \text{ At least 4 })
+=
+%1-\Pr(\text{ Exactly 5 Aces } | \text{ At least 4 Aces })
+%\\
+%&=&
+\answer{
+\sage{(binomial(5,4)*(1/52)^4*(51/52)^1)/(binomial(5,4)*(1/52)^4*(51/52)^1+1/52^5)}
+}
+$$
+\end{prompt}
+
+\end{problem}
+
+%%%%%%%%%%%
+\begin{problem}
+Suppose an experiment is conducted using a biased coin with $\Pr(H)=3/8$. What is the probability that the first Head occurs at the 10th flip.
+
+\begin{prompt}
+$$
+\Pr=\answer{\sage{(5/8)^9*(3/8)}}
+$$
+\end{prompt}
+
+\end{problem}
+
+\begin{problem}
+Suppose an experiment is conducted using a biased coin with $\Pr(H)=3/8$. What is the probability that the 3rd Head occurs at the 100th flip.
+\begin{hint}
+This problem resembles the previous problem. You basically need to decide the location of 3 Heads (one of which you already know!) and then use a similar idea to complete the problem.
+\end{hint}
+\begin{prompt}
+$$
+\Pr=\answer{\sage{binomial(99,2)*(5/8)^97*(3/8)^3}}
+$$
+\end{prompt}
+
+\end{problem}
+
+\begin{problem}
+An experiment studies a cancer testing scenario:
+\begin{itemize}
+    \item 1\% of women have breast cancer (and therefore 99\% do not).
+    \item 80\% of mammograms detect breast cancer when it is there (and therefore 20\% miss it).
+    \item 9.6\% of mammograms detect breast cancer when it’s not there (and therefore 90.4\% correctly return a negative result).
+\end{itemize}
+Calculate the probability that someone does have breast cancer given that the mammogram detected it.
+
+\begin{hint}
+We are testing the reliability of a mammogram test in this problem. Let's use $C$ for women with cancer,  $NC$ as the its complement. Similarly, lets use $M+$ for positive mammogram results (detects cancer) and $M-$ for negative results. We wish to calculate $\Pr(~C~|~M+~)$ using Bayes' Formula.
+\end{hint}
+$$\Pr(~C~|~M+~)
+=\answer{\sage{(0.01*0.8)/(0.01*0.8+0.99*0.096)}}
+$$
+
+Please, check this answer in your calculator. You will see that a woman having breast cancer after being tested positive is less than 10\%. Could you please explain why a less than 10\% though we said someone has 80\% chance of being detected when they already have cancer?
+\begin{freeResponse}
+
+\end{freeResponse}
+\end{problem}
+
+\end{document}
+
+
+\begin{problem}
+Machine $X$ has 3 independent components, two of which fail with probability $p$ and one which fails with probability .5. The machine operates so long as at least two parts work. A second machine $Y$ has only one component which fails with probability $p$. Let $\Pr[X]$ and $\Pr[Y]$ be the probabilities that machines $X$ and $Y$ fail, respectively. What is the relationship between $\Pr[X]$ and $\Pr[Y]$? 
+
 \end{problem}
 
 \begin{problem} 
