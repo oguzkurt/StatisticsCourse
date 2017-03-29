@@ -72,8 +72,8 @@ $e^x$ & {\color{red} \verb|exp(x)|}
 \begin{problem}
 Sixty percent of new drivers have had driver education. During their first year, new drivers without driver education have probability .08 of having an accident, but new drivers with driver education have only a .05 probability of an accident. What is the probability a new driver has had driver education, given that the driver has had no accidents the first year? 
 
-\begin{prompt}
-$$\Pr(\text{had education }|\text{ no accidents})=\answer{\sage{(.95)*(.6)/((.95)*(.6)+(.92)*(.4))}}$$
+\begin{prompt}%err
+$$\Pr(\text{had education }|\text{ no accidents})=\answer{\frac{(.95)(.6)}{(.95)(.6)+(.92)(.4)}}$$
 \end{prompt}
 \end{problem}
 
@@ -99,11 +99,63 @@ $$\Pr(\text{has disease }|\text{ tests positive})=\answer{ \frac{(0.85)(0.01)}{(
 
 
 \begin{problem}
+Let $X$ be a random variable with distribution function $p_X(x)=\Pr(X=x)$ defined by
+$$p_X(−1) = 1/5,~ p_X(0) = 1/5,~ p_X(1) = 2/5,~ p_X(2) = 1/5.$$
+
+\medskip
+
+\begin{enumerate}
+    \item Let $Y$ be the random variable defined by the equation $Y = X + 3$. Find
+the distribution function $p_Y (y)$ of $Y$.
+
+\medskip
+
+\begin{prompt}
+    Please, write the values of $Y=y$ and $p_Y(y)$ in the following table in an increasing order.
+    $$
+    \begin{array}{c|c}
+    Y=y & p_Y(y) \\
+    \hline
+    \answer{2} & \answer{\frac{1}{5}} \\
+    \hline
+    \answer{3} & \answer{\frac{1}{5}} \\
+    \hline
+    \answer{4} & \answer{\frac{2}{5}} \\
+    \hline
+    \answer{5} & \answer{\frac{1}{5}} \\
+    \end{array}
+    $$
+\end{prompt}
+
+    \item Let $Z$ be the random variable defined by the equation $Z = X^2$. Find the
+distribution function $p_Z(z)$ of $Z$.
+
+\medskip
+
+\begin{prompt}
+    Please, write the values of $Y=y$ and $p_Y(y)$ in the following table in an increasing order.
+    $$
+    \begin{array}{c|c}
+    Z=z & p_Z(z) \\
+    \hline
+    \answer{0} & \answer{\frac{1}{5}} \\
+    \hline
+    \answer{1} & \answer{\frac{3}{5}} \\
+    \hline
+    \answer{4} & \answer{\frac{1}{5}} \\
+    \end{array}
+    $$
+
+\end{prompt}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
 
 If the number of typographical errors per page follows a Poisson distribution with parameter $\lambda=0.2$, what is the probability that the total number of errors in 10 randomly selected pages is 10? 
 
-\begin{prompt}
-$$\Pr(\text{10 errors in 10 pages})= \answer{\sage{(exp(-2)*2^10)/(factorial(10))}}$$
+\begin{prompt} %err
+$$\Pr(\text{10 errors in 10 pages})= \answer{\sage{exp(-2)*2^10/(factorial(10))}}$$
 \end{prompt}
 \end{problem}
 
@@ -120,7 +172,7 @@ $$\Pr\left[X+\frac{1000}{X}\geq 70\right]=\answer{\frac{72}{101}}$$
 \begin{problem}
  Consider independent success-failure trials with success probability $p=0.3$. Let $X$ be the number of trials up to and including the third failure. For $k = 3, 4, 5, \ldots$ , Calculate $\Pr[X=11]$ and $\Pr[X\geq 5]$?
 
-\begin{prompt}
+\begin{prompt}%err
 \begin{eqnarray*}
 \Pr[X=11]&=&\answer{\sage{binomial(10,2)*(0.3)^3*(0.7)^8}} \\
 \Pr[X\geq 5]&=&\answer{\sage{1-binomial(2,2)*(0.3)^3-binomial(3,2)*(0.3)^3*(0.7)^1-binomial(4,2)*(0.3)^3*(0.7)^2}}
@@ -151,6 +203,8 @@ $$
 \end{prompt}
 
 \end{problem}
+
+\end{document}
 
 %%%%%%%%%%%
 \begin{problem} The number of traffic accidents per week in a small city has a Poisson distribution with mean equal to 3. What is the probability of exactly 2 accidents in 2 weeks? 
