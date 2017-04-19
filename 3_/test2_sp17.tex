@@ -23,7 +23,7 @@ The first problem is covered directly in HW.
     \item A grasshopper hops each time with a probability of $0.99$. What is the probability that it will fail to hop at most 3 times in 100 tries?  
     
 \begin{prompt}
-$$X\sim Binomial(10,0.99)\Longrightarrow\Pr(X\leq 3)=\answer[tolerance=0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001]{\sage{binomial(100,0)*(0.99)^0*(0.01)^100+binomial(100,1)*(0.99)^1*(0.01)^99+binomial(100,2)*(0.99)^2*(0.01)^98+binomial(100,3)*(0.99)^3*(0.01)^97}}$$
+$$X\sim Binomial(100,0.99)\Longrightarrow\Pr(X\leq 3)=\answer[tolerance=0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001]{\sage{binomial(100,0)*(0.99)^0*(0.01)^100+binomial(100,1)*(0.99)^1*(0.01)^99+binomial(100,2)*(0.99)^2*(0.01)^98+binomial(100,3)*(0.99)^3*(0.01)^97}}$$
 \end{prompt}
 \item We know that a honey bee dies after stinging somebody. Suppose probability that a honeybee will sting somebody when felt in danger is $0.1$. What is the probability that it will die in {\bf at most} the 3rd encounter with someone posing danger? 
 
