@@ -1,4 +1,4 @@
-\documentclass{ximera}
+\documentclass[handout]{ximera}
 \input{../preamble.tex}
 \title{Continuous Random Variables - HW6}
 \author{Oguz Kurt}
@@ -8,7 +8,6 @@
 \empty
 \end{abstract}
 \maketitle
-
 \begin{sagesilent}
 def c(n,k):
     if 0<=k and k <=n:
@@ -26,7 +25,7 @@ def m(n,mylist):
     return factorial(n)/(prod([factorial(mylist[i]) for i in range(l)]))
 \end{sagesilent}
 
-\geogebra{sSsy52bG}
+%\geogebra{sSsy52bG}
 
 
 \section*{Syntax}
@@ -85,15 +84,25 @@ Let $X$ be the random variable recording the length of students. $$\Pr(4'10''\le
 
 
 \begin{problem}
-Computers from a particular company are found to last on average for three years without any hardware malfunction, with standard deviation of two months. At least what percent of the computers last between 31 months and 41 months?
-\begin{hint}
-1 year is 12 months.
-\end{hint}
-\begin{prompt}
-Let $X$ be the time it takes  for a computer from this company to work without any mulfunction.
-$$\Pr(31mo\leq X \leq 41mo)\geq\answer{\sage{1 - 1/((2.5)^2)}}=\answer{84}\%$$
+The probability distribution function of a continuous random variable X is given below:
+\begin{image}
+\begin{tikzpicture}
+      \draw[->] (-.1,0) -- (4,0) node[right] {$x$};
+      \draw[->] (0,-.1) -- (0,1.2) node[above] {$y$};
+      \draw[domain=0:2,smooth,variable=\x,blue,thick] plot ({\x},{\x/8}) node at (2,.6) {\footnotesize $(2,0.25)$};
+      \draw[domain=2:3.5,smooth,variable=\x,blue,thick]  plot ({\x},{2*(\x-2)/3})
+      node at (3.5,1.2){\footnotesize  $(3.5,b)$};
+\end{tikzpicture}
 
-\end{prompt}
+\end{image}
+\begin{enumerate}
+\item $b=\answer{1}$
+\begin{hint}
+A pdf must be non-negative and the area under the curve must be 1.
+\end{hint}
+
+\item Median value of $X$ is $\answer{$ 
+\end{enumerate}
 \end{problem}
 
 
