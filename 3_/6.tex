@@ -1,0 +1,174 @@
+\documentclass{ximera}
+\input{../preamble.tex}
+\title{Continuous Random Variables - HW6}
+\author{Oguz Kurt}
+
+\begin{document}
+\begin{abstract}
+\empty
+\end{abstract}
+\maketitle
+\begin{sagesilent}
+def c(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)
+    else:
+        return "error"
+
+def p(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)*factorial(k)
+    else:
+        return "error"
+def m(n,mylist):
+    l=len(mylist)
+    return factorial(n)/(prod([factorial(mylist[i]) for i in range(l)]))
+\end{sagesilent}
+
+%\geogebra{sSsy52bG}
+
+
+\section*{Syntax}
+Here is a reminder of the way to input some numbers. Please, use the parsing power of your browser instead of using a calculator.
+
+\hspace{0.5cm}
+
+
+\begin{tabular}{c|c}
+Operation & Syntax  
+\\
+\hline
+$a+b$ & {\color{red} \verb!a+b!} 
+\\
+\hline
+$a- b$ & {\color{red} \verb!a-b!} 
+\\
+\hline
+$a\cdot b$ & {\color{red} \verb!a*b! } 
+\\
+\hline
+$a/b=\frac{a}{b}$ & {\color{red} \verb!a/b!}
+\\
+\hline
+$a^b$ & {\color{red} \verb|a**b| or \verb|a^b|} 
+\\
+\hline
+$\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} 
+\\
+\hline
+$a!$ & {\color{red} \verb|a!|} 
+\\
+\hline
+$\binom{a}{b}$ & {\color{red} \verb|a!/(b!*(a-b)!)|}
+\\
+\hline
+$P_k^n$ & {\color{red} \verb|a!/(a-b)!|}
+\\
+\hline
+$e^x$ & {\color{red} \verb|exp(x)|}
+\\
+\end{tabular}
+
+\hspace{1cm}
+
+\begin{problem}
+The probability distribution function of a continuous random variable X is given below:
+\begin{image}
+\begin{tikzpicture}
+      \draw[->] (-.1,0) -- (4,0) node[right] {$x$};
+      \draw[->] (0,-.1) -- (0,1.2) node[above] {$y$};
+      \draw[domain=0:2,smooth,variable=\x,blue,thick] plot ({\x},{\x/8}) node at (2,.6) {\footnotesize $(2,0.25)$};
+      \draw[domain=2:3.5,smooth,variable=\x,blue,thick]  plot ({\x},{2*(\x-2)/3})
+      node at (3.5,1.2){\footnotesize  $(3.5,b)$};
+\end{tikzpicture}
+\end{image}
+
+\begin{enumerate}
+\item $b=\answer{1}$
+\begin{hint}
+A pdf must be non-negative and the area under the curve must be 1.
+\end{hint}
+
+\item Median value of $X$ is $\answer[tolerance=0.01]{\sqrt{3}/2+2}$.
+\begin{hint}
+A continuous random variable $X$ has its median as $a$ when $\Pr(X\leq a)=\frac{1}{2}$; that is the area under the curve before the point $a$ is $\frac{1}{2}$.
+\end{hint}
+
+\end{enumerate}
+\end{problem}
+\begin{problem}
+    Suppose $X$ is the (continuous) uniform random variable on $[1,5]$. Calculate the following:
+    
+    \begin{enumerate}
+        \item First Quartile of $X$ is $q_1=\answer{1+\frac{5-1}{4}}$
+        \item The median of $X$ is $m=q_2=\answer{1+\frac{5-1}{2}}$
+        \item Third Quartile of $X$ is $q_3=\answer{1+\frac{3(5-1)}{4}}$
+        \item PDF of $X$ is $p(x)=\left\{\begin{array}{lcl} 0 & \mbox{ if } & x < \answer{1}
+        \\
+        \answer{1/4} & \mbox{ if } & \answer{1} \leq x \leq \answer{5}
+        \\
+        0 & \mbox{ if } & x \geq \answer{5}
+        \end{array} \right.$
+        \item CDF of $X$ is $F(x)=\left\{\begin{array}{lcl} \answer{0} & \mbox{ if } & x < \answer{1}
+        \\
+        \answer{(x-1)/4} & \mbox{ if } & \answer{1} \leq x \leq \answer{5}
+        \\
+        \answer{1} & \mbox{ if } & x \geq \answer{5}
+        \end{array} \right.$
+        \item 30th percentile of $X$ is $\answer[tolerance=0.01]{2.2}$.
+    \end{enumerate}
+\end{problem}
+\begin{problem}
+    Suppose $X$ is the (continuous) uniform random variable on $[2,8]$. Calculate the following:
+    
+    \begin{enumerate}
+        \item First Quartile of $X$ is $q_1=\answer{2+\frac{8-2}{4}}$
+        \item The median of $X$ is $m=q_2=\answer{2+\frac{8-2}{2}}$
+        \item Third Quartile of $X$ is $q_3=\answer{2+\frac{3(8-2)}{4}}$
+        \item PDF of $X$ is $p(x)=\left\{\begin{array}{lcl} 0 & \mbox{ if } & x < \answer{2}
+        \\
+        \answer{1/6} & \mbox{ if } & \answer{2} \leq x \leq \answer{8}
+        \\
+        0 & \mbox{ if } & x \geq \answer{8}
+        \end{array} \right.$
+        \item CDF of $X$ is $F(x)=\left\{\begin{array}{lcl} \answer{0} & \mbox{ if } & x < \answer{2}
+        \\
+        \answer{(x-2)/6} & \mbox{ if } & \answer{2} \leq x \leq \answer{8}
+        \\
+        \answer{1} & \mbox{ if } & x \geq \answer{8}
+        \end{array} \right.$
+        \item 30th percentile of $X$ is $\answer[tolerance=0.01]{3.8}$.
+    \end{enumerate}
+\end{problem}
+\begin{problem}
+Suppose that the amount of time one
+spends in a bank is a random variable $W$ exponentially distributed with
+mean 10 minutes, $\lambda = \answer{1/10}$.
+\begin{hint}
+   If $X\sim Exp(\lambda)$, then $\mu_X=\sigma_X=1/\lambda$. 
+\end{hint}
+\begin{enumerate}
+\item What is the probability
+that a customer will spend more than 15
+minutes in the bank? 
+\begin{hint}
+   If $X\sim Exp(\lambda)$, then its CDF is $F_X(x)=1-e^{-\lambda x}$ if $x\geq 0$ and 0, otherwise. 
+\end{hint}
+
+$$\Pr(W> 15)=\answer[tolerance=0.0001]{\sage{exp(-15/10)}}$$
+
+\item What is the probability
+that a customer will spend more than 15 minutes
+in the bank given that he is still in the bank
+after 10 minutes?
+\begin{hint}
+   If $X\sim Exp(\lambda)$, then it's ``memoryless''; that is, for any $t>t_0>0$,
+   $$\Pr(X>t|X>t_0)=\Pr(X>t-t_0).$$
+\end{hint}
+
+$$\Pr(W> 15 ~|~ W> 10)=\answer[tolerance=0.0001]{\sage{exp(-5/10)}}$$
+
+\end{enumerate}
+
+\end{problem}
+\end{document}
