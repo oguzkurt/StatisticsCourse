@@ -1,0 +1,157 @@
+\documentclass{ximera}
+\input{../preamble.tex}
+\title{Normal Distribution - HW7}
+\author{Oguz Kurt}
+
+\begin{document}
+\begin{abstract}
+\empty
+\end{abstract}
+\maketitle
+\begin{sagesilent}
+def c(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)
+    else:
+        return "error"
+
+def p(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)*factorial(k)
+    else:
+        return "error"
+def m(n,mylist):
+    l=len(mylist)
+    return factorial(n)/(prod([factorial(mylist[i]) for i in range(l)]))
+\end{sagesilent}
+
+%\geogebra{sSsy52bG}
+
+
+\section*{Syntax}
+Here is a reminder of the way to input some numbers. Please, use the parsing power of your browser instead of using a calculator.
+
+\hspace{0.5cm}
+
+
+\begin{tabular}{c|c}
+Operation & Syntax  
+\\
+\hline
+$a+b$ & {\color{red} \verb!a+b!} 
+\\
+\hline
+$a- b$ & {\color{red} \verb!a-b!} 
+\\
+\hline
+$a\cdot b$ & {\color{red} \verb!a*b! } 
+\\
+\hline
+$a/b=\frac{a}{b}$ & {\color{red} \verb!a/b!}
+\\
+\hline
+$a^b$ & {\color{red} \verb|a**b| or \verb|a^b|} 
+\\
+\hline
+$\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} 
+\\
+\hline
+$a!$ & {\color{red} \verb|a!|} 
+\\
+\hline
+$\binom{a}{b}$ & {\color{red} \verb|a!/(b!*(a-b)!)|}
+\\
+\hline
+$P_k^n$ & {\color{red} \verb|a!/(a-b)!|}
+\\
+\hline
+$e^x$ & {\color{red} \verb|exp(x)|}
+\\
+\end{tabular}
+
+\hspace{1cm}
+\begin{definition}[Standard Normal Distribution] If $X$ has the standard normal distribution (or Gaussian distribution), we write $X\sim \mathcal N(0,1)$. Then $\mu=0$ and $\sigma_X=1$. The cumulative distribution of $X$ is 
+$$\Pr(X\leq t)=\phi(t).$$
+If $0\leq t <5$ and $t$ is approximated to 2-decimal places, our Gaussian table approximately gives the value of $\phi(t)$. Since X is a symmetric around its average value $X=0$, we can use the following information in our calculations:
+
+\begin{itemize}
+    \item $\phi(0)=\frac{1}{2}$.
+    \item If $t<0$, then $\phi(t)=1-\phi(-t)$.
+    \item $\Pr(X\geq t)=1-\phi(t)$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Let $Y$ be a random variable with average $\mu_Y$ and standard deviation $\sigma$. The $z$-score or $z$-values of $Y$ are given by the random variable $$Z=\frac{Y-\mu}{\sigma}$$
+where $\mu_Z=0$ and $\sigma_Z=0$.
+\end{definition}
+
+\begin{theorem}
+Let $X$ have the normal distribution with mean $\mu$ and standard deviation $\sigma$; that is, $X\sim \mathcal N(\mu,\sigma)$. Then the z-scores of $X$ has the standard normal distribution, that is, $$Z=\frac{X-\mu}{\sigma}\sim \mathcal N(0,1).$$ 
+\end{theorem}
+
+\begin{problem}
+Suppose $X\sim \mathcal N(0,1).$ 
+\begin{enumerate}
+\item $\Pr(X\leq 2.35)=\phi(2.35)=\answer{0.9906}$
+\item $\Pr(X\geq 2.35)=1-\phi(2.35)=\answer{1-0.9906}$
+\item $\Pr(X\leq -2.35)=1-\phi(2.35)=\answer{1-0.9906}$
+\item $\Pr(X\geq -2.35)=1-\Pr(X\leq -2.35)=1-(1-\phi(2.35))=\phi(2.35)=\answer{0.9906}$
+\item $\Pr(1.22\leq X\leq 2.35)=\phi(2.35)-\phi(1.22)=\answer{0.9906-0.8888}$
+\item $\Pr(-2.35\leq X\leq 1.22)=\phi(1.22)-\phi(-2.35)=\answer{1-0.9906+0.8888}$
+\item $\Pr(-2.35\leq X\leq -1.22)=\phi(1.22)-\phi(-2.35)=\answer{1-0.9906+0.8888}$
+\item Find $z$ such that $\Pr(X\leq z)=\phi(z)={0.9671}$.
+$$z=\answer{1.84}$$
+\item Find $z$ such that $\Pr(X\geq z)=1-\phi(z)={1-0.7794}$.
+$$z=\answer{0.87}$$
+\item Find $z$ such that $\Pr(X\geq z)=1-\phi(z)={0.05}$.
+$$z=\answer[tolerance=0.001]{1.645}$$
+\item Find $z$ such that $\Pr(-z<X< z)=\phi(z)-\phi(-z)=2\phi(z)-1={0.75}$.
+$$z=\answer[tolerance=0.001]{1.15}$$
+\item Find $z$ such that $\Pr(|X|> z)=2-2\phi(z)={0.05}$.
+$$z=\answer[tolerance=0.001]{1.96}$$
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Suppose $X\sim \mathcal N(100,10)$ and $Z$ denote the z-scores of $X$. 
+\begin{enumerate}
+\item $\Pr(X\leq 118.4)=\Pr(Z\leq \answer{1.84})=\phi(\answer{1.84})=\answer{0.9671}$
+\item $\Pr(X\leq 91.3)=\phi(\answer{-0.87})=\answer{1-0.7794}$
+\item $\Pr(91.3\leq X\leq 118.4)=\phi(1.84)-\phi(-0.87)=\answer{0.9671-1+0.7794}$
+\item Find the value $x$ of $X$ such that $\Pr(X\leq x)=0.9906$.
+$$x=\answer{100+2.35*10}$$.
+\item Find the value $x$ of $X$ such that $\Pr(X\geq x)=0.1112$.
+$$x=\answer{100+1.22*10}$$.
+\item Find the values of $x$ of $X$ such that $\Pr(X\geq 100+x\cdot 10)+\Pr(X\leq 100-x\cdot 10)=0.01$.
+$$x=\answer[tolerance=0.003]{2.329}$$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Suppose the reaction times of teenage drivers are normally distributed with a mean of 0.53 seconds and a standard deviation of 0.11 seconds.
+
+  
+    \begin{enumerate}
+        \item What is the probability that a teenage driver chosen at random will have a reaction time less than 0.65 seconds?
+        $$\Pr(X<0.65)=\answer{0.8621} $$
+        \item Find the probability that a teenage driver chosen at random will have a reaction time between 0.4 and 0.6 seconds.
+        $$\Pr(0.4<X<0.6)=\answer{0.6199} $$
+        \item What is the probability that a teenage driver chosen at random will have a reaction time greater than 0.8 seconds?
+        $$\Pr(X>0.8)=\answer{0.0071} $$
+    \end{enumerate}
+\end{problem}
+\begin{problem}
+Suppose the chest sizes of 19th century Scottish Militiamen are normally distributed with a mean of 39.83 inches and a standard deviation of 2.05 inches.    
+    \begin{enumerate}
+        \item What percentage of the militiamen had a chest size less than 36 inches? In this context, the percentage is the corresponding probability expressed as a percent?
+        $$\Pr(X<36)=\answer{3.07}\% $$
+        \item What percentage of the militiamen had a chest size between 40 and 44 inches?
+        $$\Pr(40\leq X\leq 44)=\answer{44.69}\% $$
+        \item What percentage of militiamen had a chest size of 37 inches or greater?
+        $$\Pr(X\geq 38)=\answer{81.33}\% $$
+\end{enumerate}
+
+\end{problem}
+\end{document}
