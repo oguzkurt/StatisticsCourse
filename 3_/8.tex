@@ -1,0 +1,192 @@
+\documentclass{ximera}
+\input{../preamble.tex}
+\title{Sampling Proportion/Mean Distributions - HW8}
+\author{Oguz Kurt}
+
+\begin{document}
+\begin{abstract}
+\empty
+\end{abstract}
+\maketitle
+\begin{sagesilent}
+def c(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)
+    else:
+        return "error"
+
+def p(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)*factorial(k)
+    else:
+        return "error"
+def m(n,mylist):
+    l=len(mylist)
+    return factorial(n)/(prod([factorial(mylist[i]) for i in range(l)]))
+\end{sagesilent}
+
+%\geogebra{sSsy52bG}
+
+
+\section*{Syntax}
+Here is a reminder of the way to input some numbers. Please, use the parsing power of your browser instead of using a calculator.
+
+\hspace{0.5cm}
+
+
+\begin{tabular}{c|c}
+Operation & Syntax  
+\\
+\hline
+$a+b$ & {\color{red} \verb!a+b!} 
+\\
+\hline
+$a- b$ & {\color{red} \verb!a-b!} 
+\\
+\hline
+$a\cdot b$ & {\color{red} \verb!a*b! } 
+\\
+\hline
+$a/b=\frac{a}{b}$ & {\color{red} \verb!a/b!}
+\\
+\hline
+$a^b$ & {\color{red} \verb|a**b| or \verb|a^b|} 
+\\
+\hline
+$\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} 
+\\
+\hline
+$a!$ & {\color{red} \verb|a!|} 
+\\
+\hline
+$\binom{a}{b}$ & {\color{red} \verb|a!/(b!*(a-b)!)|}
+\\
+\hline
+$P_k^n$ & {\color{red} \verb|a!/(a-b)!|}
+\\
+\hline
+$e^x$ & {\color{red} \verb|exp(x)|}
+\\
+\end{tabular}
+
+\section*{Sampling Proportion/Mean Distributions}
+\subsection*{Sampling Proportion Distributions}
+Suppose we know, for a given experiment, the proportion of success in a population is $p_0$. If we pick a sample of size n from this population, then the proportion of success $\hat p$ in a given sample of size of  n is a random variable. To understand this, we can treat $Bernoulli(p_0)$-random variable $X_i$ such that $\Pr(X_i=1)=p_0$ and $\Pr(X_i=0)=1-p_0$, the proportion $\hat p$ can be seen as $\hat p=\frac{X_1+X_2+\ldots+X_n}{n}$ of where $Y=X_1+X_2+\ldots+X_n\sim Binomial(n,p_0)$.  Since we know $\mu_Y=np_0$ and $Var(Y)=np_0(1-p_0)$ for binomial random variables, we get 
+$$\mu_{\hat p}=\frac{\mu_Y}{n}=p_0 \mbox{ and } \sigma_{\hat p}=\sigma_{Y/n}=\sqrt{\frac{Var(Y)}{n^2}}=\sqrt{\frac{p_0(1-p_0)}{n}}$$
+
+We further know that $\hat p\approx \mathcal N(p_0,\sqrt{\frac{p_0(1-p_0)}{n}}$ gives a nice approximation if $np_0\geq 5$ and $n(1-p_0)\geq 5$ are both satisfied. 
+
+\begin{problem}
+The company JCrew advertises that 95\% of its online orders ship within two working
+days. You select a random sample of 200 of the 10,000 orders received over the past month to
+audit. The audit reveals that 180 of these orders shipped on time. This is a categorical problem
+(sample proportion).
+\begin{enumerate} 
+    \item Sample proportion of orders shipped on time is $\hat p=\answer{180/200}$
+
+    \item Does the sample data satisfy conditions necessary for the sample proportion to follow an
+approximately normal distribution?
+\begin{multipleChoice}
+    \choice{No}
+    \choice[correct]{Yes}
+\end{multipleChoice}
+{\bf Reason:} $np_0=\answer{200*.95}$
+\wordChoice{ \choice{$<5$} \choice[correct]{$\geq 5$}}
+and $n(1-p_0)=\answer{200*.05}$
+\wordChoice{ \choice{$<5$} \choice[correct]{$\geq 5$}}
+    
+    \item What is the mean and standard deviation of the sample distribution assuming it's normal?
+    $\mu_{\hat p}=\answer{0.95}$ and $\sigma_{\hat p}=\answer[tolerance=0.0001]{\sage{sqrt(.95*.05/200)}}$
+
+    \item . If JCrew really ships 95\% of its orders on time, what is probability that the proportion in a
+random sample of 200 orders is as small or smaller as the proportion in the audit?
+$$\Pr(\hat p \leq 0.9)=\Pr(Z\leq \answer[tolerance=0.005]{-3.33})=\answer[tolerance=0.00001]{0.0006}$$
+\item If we treated the problem as a binomial, how would the problem be set up? That is, what
+would we want to find the probability of?
+\begin{explanation}
+$Y=n\hat p \approx Binomial(\answer{200},\answer{.95})$.
+Hence, we need to calculate $\Pr(Y\leq \answer{180})$ in the place of part (d). 
+\end{explanation}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+A Gallup poll found that for those Americans who have lost weight, 31\% believed the most
+effective strategy involved exercise. What is the probability that from random sample of 300
+Americans the sample proportion falls between 29\% and 33\%? Categorical (sample proportion).  
+
+\begin{explanation}
+\begin{itemize} 
+    \item Sample data \wordChoice{\choice[correct]{does}\choice{does not}} satisfy conditions necessary for the sample proportion to follow an
+approximately normal distribution because $np_0=\answer{300*.31}$
+\wordChoice{ \choice{$<5$} \choice[correct]{$\geq 5$}}
+and $n(1-p_0)=\answer{300*.69}$
+\wordChoice{ \choice{$<5$} \choice[correct]{$\geq 5$}}
+    
+    \item $\mu_{\hat p}=\answer{0.31}$ and $\sigma_{\hat p}=\answer[tolerance=0.0001]{\sage{sqrt(.31*.69/300)}}$
+
+    \item We need to calculate:    
+\begin{eqnarray*}
+\Pr(0.29\leq \hat p \leq 0.33)
+&=&
+\Pr(\hat p \leq 0.33) -\Pr(\hat p \leq 0.29)
+\\
+&=&
+\Pr(Z \leq \answer[tolerance=0.001]{(0.33 – 0.31)/0.0267 }) -\Pr(Z \leq \answer[tolerance=0.001]{(0.29 – 0.31)/0.0267 })
+\\
+&=& 
+\phi(\answer[tolerance=0.001]{(0.33 – 0.31)/0.0267 })-\phi(\answer[tolerance=0.001]{(0.29 – 0.31)/0.0267 })
+\\
+&=&
+\answer[tolerance=0.00005]{0.5468}
+\end{eqnarray*}
+\end{itemize}
+\end{explanation}
+\end{problem}
+
+\subsection*{Sampling Mean Distributions}
+Suppose we have a data over a population with mean $\mu$ and standard deviation $\sigma$ over a population. If we pick a sample of size n from this population, the mean $\bar x$ of such a sample is a random variable 
+$$\bar{x}=\frac{X_1+X_2+\ldots+X_n}{n}$$
+where $X_i$ is the $i^{th}$ random pick from this population. We then know
+$$\mu_{\bar x}=\mu \mbox{ and } \sigma_{\bar x}=\frac{\sigma}{\sqrt{n}}.$$
+
+We further know that $\bar x\approx \mathcal N(\mu,\frac{\sigma}{\sqrt{n}})$ gives a nice approximation if the population data is distributed normally or $n\geq 30$.
+
+\begin{remark}
+Please, note that we tried to represent sample proportion distributions and sample mean distributions using the same notation intentionally. Our reasoning is quite simple. Sample proportion distributions is a special case of sample mean distributions. We usually use it if our original data is categorical in nature (success/failure) while sample mean distributions are used on numerical data. 
+\end{remark}
+
+\begin{problem}
+A bottling company uses a machine to fill the bottles with olive oil. The bottles are designed
+to contain 475 milliliters (ml). In fact, the contents vary according to a normal distribution with
+a mean of 473 ml and standard deviation of 3 ml. Quantitative (sample mean). 
+
+    \begin{enumerate}
+        \item What is the distribution, mean, and distribution of the sample mean of six randomly
+selected bottles?
+
+        \begin{itemize}
+        \item Distribution is approximately \wordChoice{\choice{exponential} \choice{uniform} \choice[correct]{normal}}.
+%        \item Sample mean should be normal with a mean$\mu_{\bar{x}} = \answer{473}$.
+        \item Standard deviation is $\sigma_{\bar x}=\answer[tolerance=0.0001]{\sage{3/sqrt(6)}}$
+        \end{itemize}        
+        
+        \item  What is the probability that the mean of six bottles is less than 470 ml?
+        $\Pr(\bar X<470)=\phi(\answer[tolerance=0.0001]{\sage{(470-473)/(3/sqrt(6))}})=[tolerance=0.0001]\answer[tolerance=0.0001]{0.0069}$
+        \item  What is probability that the mean of six bottles is more than 475 ml?
+        $\Pr(\bar X>475)=1-\phi(\answer[tolerance=0.0001]{\sage{(475-473)/(3/sqrt(6))}})=\answer[tolerance=0.0001]{0.0505}$
+    \end{enumerate}
+\end{problem}
+\begin{problem}
+PSF which operates and manages car rentals for PS employees found
+that the tire lifetime for their vehicles has a mean of 50,000 miles and standard deviation of 3500 miles. Quantitative (sample mean).
+\begin{enumerate}
+    \item What would be the distribution, mean and standard deviation for mean lifetime of a random sample of 50 vehicles?
+    $$\bar x \approx \mathcal N(\mu=\answer{50000},         \sigma=\answer[tolerance=0.0001]{\sage{3500/sqrt(50)}})$$
+    \item  What is the probability that the sample mean lifetime for these 50 vehicles exceeds 52,000?
+    $$\Pr(\bar x\geq 52,000 )= \Pr(Z\geq \answer[tolerance=0.0001]{\sage{(52000-50000)/(3500/sqrt(50))}}=1-\phi(\answer[tolerance=0.0001]{\sage{(52000-50000)/(3500/sqrt(50))}})=\answer[tolerance=0.00007]{0.00003}$$
+
+\end{enumerate}
+\end{problem}
+\end{document}
+ 

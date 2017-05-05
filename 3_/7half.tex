@@ -1,0 +1,152 @@
+\documentclass{ximera}
+\input{../preamble.tex}
+\title{Significance and Confidence Intervals - HW8}
+\author{Oguz Kurt}
+
+\begin{document}
+\begin{abstract}
+Here, we will give the probabilities and you will find the z-scores or the values of the random variable that give the desired probability.
+\end{abstract}
+\maketitle
+\begin{sagesilent}
+def c(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)
+    else:
+        return "error"
+
+def p(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)*factorial(k)
+    else:
+        return "error"
+def m(n,mylist):
+    l=len(mylist)
+    return factorial(n)/(prod([factorial(mylist[i]) for i in range(l)]))
+\end{sagesilent}
+
+%\geogebra{sSsy52bG}
+
+
+\section*{Syntax}
+Here is a reminder of the way to input some numbers. Please, use the parsing power of your browser instead of using a calculator.
+
+\hspace{0.5cm}
+
+
+\begin{tabular}{c|c}
+Operation & Syntax  
+\\
+\hline
+$a+b$ & {\color{red} \verb!a+b!} 
+\\
+\hline
+$a- b$ & {\color{red} \verb!a-b!} 
+\\
+\hline
+$a\cdot b$ & {\color{red} \verb!a*b! } 
+\\
+\hline
+$a/b=\frac{a}{b}$ & {\color{red} \verb!a/b!}
+\\
+\hline
+$a^b$ & {\color{red} \verb|a**b| or \verb|a^b|} 
+\\
+\hline
+$\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} 
+\\
+\hline
+$a!$ & {\color{red} \verb|a!|} 
+\\
+\hline
+$\binom{a}{b}$ & {\color{red} \verb|a!/(b!*(a-b)!)|}
+\\
+\hline
+$P_k^n$ & {\color{red} \verb|a!/(a-b)!|}
+\\
+\hline
+$e^x$ & {\color{red} \verb|exp(x)|}
+\\
+\end{tabular}
+
+\hspace{1cm}
+\begin{definition}[Significance Levels] Suppose  $Z$ has the standard normal distribution (or Gaussian distribution) and $0<\alpha<1$.
+\begin{itemize}
+    \item If we focus on  $\Pr(Z\geq z_{\alpha})=\alpha$, then  we study the {\bf RIGHT tail} of the given normal curve. Here, $z_{\alpha}$ is almost always positive as our main focus is very small values of $\alpha$. In this case, $\Pr(Z\geq z)\geq\alpha$ for any $z<z_{\alpha}$. Hence, we call $z$ is {\bf statistically significant} if $z\leq z_{\alpha}$. We also call $(0,z_{\alpha}]$ as the {\bf critical region} for the given right-tailed problem. 
+    \item If we focus on  $\Pr(X\leq z_{\alpha})=\alpha$, then  we study the {\bf LEFT tail} of the given normal curve. Here, $z_{\alpha}$ is almost always negative  as our main focus is very small values of $\alpha$. In this case, $\Pr(Z\leq z)\geq \alpha$ for any $z\geq z_{\alpha}$. Hence, we call $z$ is {\bf statistically significant} if $z\geq z_{\alpha}$. We also call $[z_{\alpha},0$ as the {\bf critical region} for the given left-tailed problem. 
+
+    \item If we focus on  $\Pr(|X|\geq z_{\alpha/2})=2\Pr(X\geq z_{\alpha/2})=2(\alpha/2)=\alpha$, then  we study the {\bf two tails} of the given normal curve, both. Here, $z_{\alpha/2}>0$ but we focus on both tails. So, both $\pm z_{\alpha/2}$ matter. In this case, $\Pr(|Z|\geq z)\geq \alpha$ whenever $-z_{\alpha/2}\leq z \leq z_{\alpha/2}$. Hence, we call $z$ is {\bf statistically significant} if $-z_{\alpha/2}\leq z \leq z_{\alpha/2}$. We also call $[-z_{\alpha/2},z_{\alpha/2}]$ as the {\bf critical region} for the given left-tailed problem. 
+\end{itemize}
+
+In each of the above case, $\alpha$  is called the {\bf significance level}. In this case, $1-\alpha$ is called the {\bf confidence level}.
+
+If $X\sim \mathcal N(\mu,\sigma)$, we can always convert our critical interval for z-scores to the critical interval for $X$ using $\frac{X-\mu}{\sigma}=Z$. In each case, our critical interval is also called the {\bf confidence interval}.
+\end{definition}
+
+\begin{remark}
+Being in the confidence interval and having the respective probability greater than or equal to $\alpha$ are equivalent. 
+\end{remark}
+\begin{theorem}
+Let $X$ have the normal distribution with mean $\mu$ and standard deviation $\sigma$; that is, $X\sim \mathcal N(\mu,\sigma)$. Then the z-scores of $X$ has the standard normal distribution, that is, $$Z=\frac{X-\mu}{\sigma}\sim \mathcal N(0,1).$$ 
+\end{theorem}
+
+\begin{problem}
+Suppose $Z\sim \mathcal N(0,1)$. Calculate the interval for $90\%$ confidence if we only focus on the right tail. 
+\begin{explanation}
+$\alpha=1-0.90=0.10$.
+$\Pr(Z\geq z_{0.10})=0.10$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1.285}$. Hence, our confidence interval is $z$ \wordChoice{\choice[correct]{$\leq$} \choice{$\geq$}} $\answer[tolerance=0.001]{1.285}$.
+
+\end{explanation}
+\end{problem}
+
+\begin{problem}
+Suppose $Z\sim \mathcal N(100,10)$. Calculate the interval for $90\%$ confidence if we only focus on the right tail. 
+\begin{explanation}
+$\alpha=1-0.90=0.10$.
+$\Pr(Z\geq z_{0.10})=0.10$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1.285}$. Hence, our confidence interval is X \wordChoice{\choice[correct]{$\leq$} \choice{$\geq$}} $\answer[tolerance=0.001]{100+1.285*10}$.
+
+\end{explanation}
+\end{problem}
+
+
+\begin{problem}
+Suppose $Z\sim \mathcal N(0,1)$. Calculate the interval for $95\%$ confidence if we only focus on the left tail. 
+\begin{explanation}
+$\alpha=1-0.95=0.05$.
+$\Pr(Z\leq z_{0.10})=0.05$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{-1.645}$. Hence, our confidence interval is $z$ \wordChoice{\choice[correct]{$\geq$} \choice{$\leq$}} $\answer[tolerance=0.001]{-1.645}$.
+
+\end{explanation}
+\end{problem}
+
+
+\begin{problem}
+Suppose $X\sim \mathcal N(100,10)$. Calculate the interval for $95\%$ confidence if we only focus on the left tail. 
+\begin{explanation}
+$\alpha=1-0.95=0.05$.
+$\Pr(Z\leq z_{0.10})=0.05$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{-1.645}$. Hence, our confidence interval is $X$ \wordChoice{\choice[correct]{$\geq$} \choice{$\leq$}} $\answer[tolerance=0.001]{100-1.645*10}$.
+
+\end{explanation}
+\end{problem}
+
+\begin{problem}
+Suppose $Z\sim \mathcal N(0,1)$. Calculate the interval for $80\%$ confidence if we only focus on the right tail. 
+\begin{explanation}
+$\alpha=1-0.80=0.20$.
+$\Pr(|Z|\geq z_{0.10})=0.20$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1.285}$. Hence, our confidence interval is \wordChoice{\choice{$[0,1.285]$} \choice{$[-1.285,0]$} \choice[correct]{$[-1.285,2.285]$}}. 
+
+\end{explanation}
+\end{problem}
+
+
+\begin{problem}
+Suppose $Z\sim \mathcal N(0,1)$. Calculate the interval for $80\%$ confidence if we only focus on the right tail. 
+\begin{explanation}
+$\alpha=1-0.80=0.20$.
+$\Pr(|Z|\geq z_{0.10})=0.20$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1.285}$. Hence, our confidence interval zor z-scores is \wordChoice{\choice{$[0,1.285]$} \choice{$[-1.285,0]$} \choice[correct]{$[-1.285,2.285]$}}.
+Hence, our confidence interval for $X$ is
+$$[\answer{100-1.285*10},\answer{100+1.285*10}].$$
+
+\end{explanation}
+\end{problem}
+
+\end{document}
