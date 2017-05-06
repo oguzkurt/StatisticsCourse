@@ -1,0 +1,207 @@
+\documentclass{ximera}
+\input{../preamble.tex}
+\title{Hypothesis Testing and Confidence Intervals(!) - HW10}
+\author{Oguz Kurt}
+
+\begin{document}
+\begin{abstract}
+\empty
+\end{abstract}
+\maketitle
+\begin{sagesilent}
+def c(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)
+    else:
+        return "error"
+
+def p(n,k):
+    if 0<=k and k <=n:
+        return binomial(n,k)*factorial(k)
+    else:
+        return "error"
+def m(n,mylist):
+    l=len(mylist)
+    return factorial(n)/(prod([factorial(mylist[i]) for i in range(l)]))
+\end{sagesilent}
+
+%\geogebra{sSsy52bG}
+
+
+\section*{Syntax}
+Here is a reminder of the way to input some numbers. Please, use the parsing power of your browser instead of using a calculator.
+
+\hspace{0.5cm}
+
+
+\begin{tabular}{c|c}
+Operation & Syntax  
+\\
+\hline
+$a+b$ & {\color{red} \verb!a+b!} 
+\\
+\hline
+$a- b$ & {\color{red} \verb!a-b!} 
+\\
+\hline
+$a\cdot b$ & {\color{red} \verb!a*b! } 
+\\
+\hline
+$a/b=\frac{a}{b}$ & {\color{red} \verb!a/b!}
+\\
+\hline
+$a^b$ & {\color{red} \verb|a**b| or \verb|a^b|} 
+\\
+\hline
+$\sqrt{a}$ & {\color{red} \verb|sqrt(a)| or \verb|a**(1/2)|} 
+\\
+\hline
+$a!$ & {\color{red} \verb|a!|} 
+\\
+\hline
+$\binom{a}{b}$ & {\color{red} \verb|a!/(b!*(a-b)!)|}
+\\
+\hline
+$P_k^n$ & {\color{red} \verb|a!/(a-b)!|}
+\\
+\hline
+$e^x$ & {\color{red} \verb|exp(x)|}
+\\
+\end{tabular}
+
+\hspace{1cm}
+\section*{Hypothesis Testing for Averages}
+\begin{enumerate}
+    \item Identify the significance level $\alpha$ for the problem.
+    \item Test whether the random variable $\hat p$ (or $\bar x$) can be approximated by a normal random variable. If yes, apply the following steps.       
+    \item Set your null and alternative hypotheses:
+        \begin{itemize}        
+            \item (Two-tailed) $\left\{\begin{array}{ll} \mathcal H_0:& p=p_0 \\ \mathcal H_a: & p\neq p_0\end{array}\right\}$\\
+            (or $\left\{\begin{array}{ll} \mathcal H_0:& \mu=\mu_0 \\ \mathcal H_a: & \mu\neq \mu_0\end{array}\right\}$)
+            \item (Right-tailed) $\left\{\begin{array}{ll} \mathcal H_0:& p=p_0 \\ \mathcal H_a: & p>p_0\end{array}\right\}$\\
+            (or $\left\{\begin{array}{ll} \mathcal H_0:& \mu=\mu_0 \\ \mathcal H_a: & \mu> \mu_0\end{array}\right\}$)
+            \item (Left-tailed) $\left\{\begin{array}{ll} \mathcal H_0:& p=p_0 \\ \mathcal H_a: & p< p_0\end{array}\right\}$\\
+            (or $\left\{\begin{array}{ll} \mathcal H_0:& \mu=\mu_0 \\ \mathcal H_a: & \mu< \mu_0\end{array}\right\}$)
+            
+        \end{itemize}
+       \item Suppose the null hypothesis is true: $\mu_{\hat p}=p_0$. \\
+        (or $\mu_{\bar x}=\mu_0$).
+        \item Then $\hat p\approx \mathcal N(p_0,\sigma_{\hat p}=\sqrt{\frac{p_0(1-p_0)}{n}})$ \\
+        (or $\bar x\approx \mathcal N(\mu_0, \sigma_{\bar x}=\frac{\sigma}{\sqrt{n}}) $).
+        \item Set $Z=\frac{\hat p-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}$ and $z^*=\frac{p-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}$.\\
+        (or $Z=\frac{\bar x-\mu_0}{\frac{\sigma}{\sqrt{n}}}$ and $z^*=\frac{\mu -\mu_0}{\frac{\sigma}{\sqrt{n}}}$)
+        \item We then calculate the p-value. 
+        \begin{itemize}
+            \item If two-tailed, calculate $\beta=\Pr\left(|Z|>z^*\right)=2-2\phi(z^*)$.
+            \item If right-tailed, calculate $\beta=\Pr\left(Z>z^*\right)=1-\phi(z^*)$.
+            \item If left-tailed, calculate $\beta=\Pr\left(Z<z^*\right)=1-\phi(-z^*)$.
+        \end{itemize}
+        \item If $\beta\geq \alpha$ then null hypothesis is true. Otherwise, it is false and new hypothesis is needed.
+\end{enumerate}
+
+\begin{problem}
+The company JCrew advertises that 95\% of its online orders ship within two working
+days. A consumer advocacy group selects a random sample of 200 of the 10,000 orders received over the past month to
+audit. The audit reveals that 180 of these orders shipped on time. They claim that the company falsely claims that, $95\%$ of the time, their orders ship on time and it should be less than that. Does the advocacy group accept or reject the hypothesis of the company if the test is conducted at the significance of $5\%$?
+
+
+\begin{enumerate}
+    \item $\alpha=\answer{0.05}$.
+    \item Sample proportion of orders shipped on time is $\answer{180/200}$
+     \item The test is \wordChoice{\choice{two-tailed}, \choice{right-tailed}\choice[correct]{left-tailed} }.
+    \item Does the sample data satisfy conditions necessary for the sample proportion to follow an
+approximately normal distribution?
+\begin{multipleChoice}
+    \choice{No}
+    \choice[correct]{Yes}
+\end{multipleChoice}
+{\bf Reason:} $np_0=\answer{200*.95}$
+and $n(1-p_0)=\answer{200*.05}$. Are they both greater than 5? \wordChoice{\choice[correct]{Yes!}\choice{No!}}
+    
+    \item Based on the null hypothesis, what should you assume to be the mean and standard deviation of your data? 
+
+$\mu_{\hat p}=\answer{0.95}$ and $\sigma_{\hat p}=\answer[tolerance=0.0001]{\sage{sqrt(.95*.05/200)}}$
+    \item $Z=\frac{\hat p -\answer{0.95}}{\answer[tolerance=0.0001]{\sage{sqrt(.95*.05/200)}}}\approx \mathcal N(0,1)$.
+    \item $z^*=\answer[tolerance=0.0001]{\sage{(0.90 -0.95)/(sqrt(.95*.05/200))}}$
+    \item $\beta=\Pr(Z<z^*)=\phi(z^*)=\answer[tolerance=0.001]{.00060}$
+    \item Do we accept or reject the null hypothesis?
+    \begin{multipleChoice}
+        \choice[correct]{Reject because $\beta< \alpha$}
+        \choice{Accept because $\beta< \alpha$}
+        \choice{Reject because $\beta\geq \alpha$}
+        \choice{Accept because $\beta\geq \alpha$}
+    \end{multipleChoice}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+A Gallup poll found that for those Americans who have lost weight, 31\% believed the most
+effective strategy involved exercise. We conducted our own experiment on 3000 random people from Gallup poll and found out that 33\% of people believed the same thing. We claim that the percentage of such people should be greater than 31\%. Test Gallup poll's hypothesis that $31\%$ believe the most effective strategy for weight loss involves exercise at the significance of 0.5\%.
+
+\begin{explanation}
+
+\begin{enumerate}
+    \item $\alpha=\answer{0.005}$.
+    \item Sample proportion is $\answer{0.33}$
+     \item The test is \wordChoice{\choice{two-tailed}, \choice[correct]{right-tailed}\choice{left-tailed} }.
+    \item Does the sample data satisfy conditions necessary for the sample proportion to follow an
+approximately normal distribution?
+\begin{multipleChoice}
+    \choice{No}
+    \choice[correct]{Yes}
+\end{multipleChoice}
+{\bf Reason:} $np_0=\answer{30*.33}$
+and $n(1-p_0)=\answer{30*.67}$. Are they both greater than 5? \wordChoice{\choice[correct]{Yes!}\choice{No!}}
+    
+    \item Based on the null hypothesis, what should you assume to be the mean and standard deviation of your data? 
+
+$\mu_{\hat p}=\answer{0.31}$ and $\sigma_{\hat p}=\answer[tolerance=0.0001]{\sage{sqrt(.31*.69/3000)}}$
+    \item $Z=\frac{\hat p -\answer{0.31}}{\answer[tolerance=0.0001]{\sage{sqrt(.31*.69/3000)}}}\approx \mathcal N(0,1)$.
+    \item $z^*=\answer[tolerance=0.0001]{\sage{(0.33 -0.31)/(sqrt(.31*.69/3000))}}$
+    \item $\beta=\Pr(Z<z^*)=\phi(z^*)=\answer[tolerance=0.001]{.00914}$
+    \item Do we accept or reject the null hypothesis?
+    \begin{multipleChoice}
+        \choice{Reject because $\beta< \alpha$}
+        \choice{Accept because $\beta< \alpha$}
+        \choice{Reject because $\beta\geq \alpha$}
+        \choice[correct]{Accept because $\beta\geq \alpha$}
+    \end{multipleChoice}
+\end{enumerate}
+\end{explanation}
+\end{problem}
+
+\begin{problem}
+A bottling company uses a machine to fill the bottles with olive oil. The bottles are designed
+to contain 475 milliliters (ml). In fact, the contents vary according to a normal distribution with
+a mean of 473 ml and standard deviation of 3 ml. An audit of 100 bottles had an average of 472 mililiters of oil. The auditors claim that the mean size is not 473 ml. Test the null hypothesis that the mean oil amount in a bottle is 473 ml at the significance of 0.1\%.
+
+\begin{explanation}
+\begin{enumerate}
+    \item $\alpha=\answer{0.001}$.
+    \item Sample mean of the amount of oil in a bottle is $\answer{472}$
+     \item The test is \wordChoice{\choice[correct]{two-tailed}\choice{right-tailed}\choice{left-tailed} }.
+    \item Does the sample data satisfy conditions necessary for the sample mean to follow an
+approximately normal distribution?
+\begin{multipleChoice}
+    \choice{No}
+    \choice[correct]{Yes}
+\end{multipleChoice}
+{\bf Reason:} Is it enough to test 100 bottles? \wordChoice{\choice[correct]{Yes!}\choice{No!}}
+    
+    \item Based on the null hypothesis, what should you assume to be the mean and standard deviation of your data? 
+
+$\mu_{\bar x}=\answer{473}$ and $\sigma_{\bar x}=\answer[tolerance=0.0001]{{3/(10)}}$
+    \item $Z=\frac{\bar x -\answer{473}}{\answer[tolerance=0.0001]{0.3}}\approx \mathcal N(0,1)$.
+    \item $z^*=\answer[tolerance=0.0001]{\sage{(472-473)/0.3}}$
+    \item $\beta=\Pr(|Z|>|z^*|)=2-2\phi(|z^*|)=\answer[tolerance=0.0001]{2*.00043}$
+    \item Do we accept or reject the null hypothesis?
+    \begin{multipleChoice}
+        \choice[correct]{Reject because $\beta< \alpha$}
+        \choice{Accept because $\beta< \alpha$}
+        \choice{Reject because $\beta\geq \alpha$}
+        \choice{Accept because $\beta\geq \alpha$}
+    \end{multipleChoice}
+\end{enumerate}
+\end{explanation}
+\end{problem}
+\end{document}
