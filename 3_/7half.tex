@@ -94,16 +94,16 @@ Let $X$ have the normal distribution with mean $\mu$ and standard deviation $\si
 Suppose $Z\sim \mathcal N(0,1)$. Calculate the interval for $90\%$ confidence if we only focus on the right tail. 
 \begin{explanation}
 $\alpha=1-0.90=0.10$.
-$\Pr(Z\geq z_{0.10})=0.10$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1.285}$. Hence, our confidence interval is $z$ \wordChoice{\choice[correct]{less than or equal to} \choice{greater than equal to}} $\answer[tolerance=0.001]{1.285}$.
+$\Pr(Z\geq z_{0.10})=0.10$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1.285}$. Hence, our confidence interval for $z$ is \wordChoice{\choice[correct]{less than or equal to} \choice{greater than equal to}} $\answer[tolerance=0.001]{1.285}$.
 
 \end{explanation}
 \end{problem}
 
 \begin{problem}
-Suppose $Z\sim \mathcal N(100,10)$. Calculate the interval for $90\%$ confidence if we only focus on the right tail. 
+Suppose $X\sim \mathcal N(100,10)$. Calculate the interval for $90\%$ confidence if we only focus on the right tail. 
 \begin{explanation}
 $\alpha=1-0.90=0.10$.
-$\Pr(Z\geq z_{0.10})=0.10$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1.285}$. Hence, our confidence interval is X \wordChoice{\choice[correct]{less than or equal to} \choice{greater than or equal to}} $\answer[tolerance=0.001]{100+1.285*10}$.
+$\Pr(Z\geq z_{0.10})=0.10$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1.285}$. Hence, our confidence interval for X is \wordChoice{\choice[correct]{less than or equal to} \choice{greater than or equal to}} $\answer[tolerance=0.01]{\sage{100+1.285*10}}$.
 
 \end{explanation}
 \end{problem}
@@ -113,7 +113,7 @@ $\Pr(Z\geq z_{0.10})=0.10$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1
 Suppose $Z\sim \mathcal N(0,1)$. Calculate the interval for $95\%$ confidence if we only focus on the left tail. 
 \begin{explanation}
 $\alpha=1-0.95=0.05$.
-$\Pr(Z\leq z_{0.10})=0.05$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{-1.645}$. Hence, our confidence interval is $z$ \wordChoice{\choice[correct]{greater than or equal to} \choice{less than or equal to}} $\answer[tolerance=0.001]{-1.645}$.
+$\Pr(Z\leq z_{0.10})=0.05$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{-1.645}$. Hence, our confidence interval for $z$ is \wordChoice{\choice[correct]{greater than or equal to} \choice{less than or equal to}} $\answer[tolerance=0.001]{-1.645}$.
 
 \end{explanation}
 \end{problem}
@@ -123,7 +123,7 @@ $\Pr(Z\leq z_{0.10})=0.05$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{-
 Suppose $X\sim \mathcal N(100,10)$. Calculate the interval for $95\%$ confidence if we only focus on the left tail. 
 \begin{explanation}
 $\alpha=1-0.95=0.05$.
-$\Pr(Z\leq z_{0.10})=0.05$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{-1.645}$. Hence, our confidence interval is $X$ \wordChoice{\choice[correct]{greater than or equal to} \choice{less than or equal to}} $\answer[tolerance=0.001]{100-1.645*10}$.
+$\Pr(Z\leq z_{0.05})=0.05$ is satisfied for $z_{0.05}=\answer[tolerance=0.001]{-1.645}$. Hence, our confidence interval for $X$ is \wordChoice{\choice[correct]{greater than or equal to} \choice{less than or equal to}} $\answer[tolerance=0.001]{\sage{100-1.645*10}}$.
 
 \end{explanation}
 \end{problem}
@@ -139,11 +139,11 @@ $\Pr(|Z|\geq z_{0.10})=0.20$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]
 
 
 \begin{problem}
-Suppose $Z\sim \mathcal N(100,10)$. Calculate the interval for $80\%$ confidence if we focus both tails. 
+Suppose $X\sim \mathcal N(100,10)$. Calculate the interval for $80\%$ confidence if we focus both tails. 
 \begin{explanation}
 $\alpha=1-0.80=0.20$.
 $\Pr(|Z|\geq z_{0.10})=0.20$ is satisfied for $z_{0.10}=\answer[tolerance=0.001]{1.285}$. Hence, our confidence interval  for $X$ is
-$$[\answer{100-1.285*10},\answer{100+1.285*10}].$$
+$$[\answer{\sage{100-1.285*10}},\answer{\sage{100+1.285*10}}].$$
 
 \end{explanation}
 \end{problem}

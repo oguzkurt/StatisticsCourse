@@ -1,6 +1,6 @@
 \documentclass{ximera}
 \input{../preamble.tex}
-\title{Hypothesis Testing and Confidence Intervals(!) - HW10}
+\title{Hypothesis Testing - HW9}
 \author{Oguz Kurt}
 
 \begin{document}
@@ -115,15 +115,15 @@ approximately normal distribution?
     \choice{No}
     \choice[correct]{Yes}
 \end{multipleChoice}
-{\bf Reason:} $np_0=\answer{200*0.95}$
-and $n(1-p_0)=\answer{200*0.05}$. Are they both greater than 5? \wordChoice{\choice[correct]{Yes!}\choice{No!}}
+{\bf Reason:} $np_0=\answer{\sage{200*0.95}}$
+and $n(1-p_0)=\answer{\sage{200*0.05}}$. Are they both greater than 5? \wordChoice{\choice[correct]{Yes!}\choice{No!}}
     
     \item Based on the null hypothesis, what should you assume to be the mean and standard deviation of your data? 
 
 $\mu_{\hat p}=\answer{0.95}$ and $\sigma_{\hat p}=\answer[tolerance=0.0001]{\sage{sqrt(.95*0.05/200)}}$
     \item $Z=\frac{\hat p -\answer{0.95}}{\answer[tolerance=0.0001]{\sage{sqrt(.95*0.05/200)}}}\approx \mathcal N(0,1)$.
     \item $z^*=\answer[tolerance=0.0001]{\sage{(0.90 -0.95)/(sqrt(.95*0.05/200))}}$
-    \item $\beta=\Pr(Z<z^*)=\phi(z^*)=\answer[tolerance=0.001]{.00060}$
+    \item $\beta=\Pr(Z<z^*)=\phi(z^*)=\answer[tolerance=0.001]{0.00060}$
     \item Do we accept or reject the null hypothesis?
     \begin{multipleChoice}
         \choice[correct]{Reject because $\beta< \alpha$}
@@ -150,8 +150,8 @@ approximately normal distribution?
     \choice{No}
     \choice[correct]{Yes}
 \end{multipleChoice}
-{\bf Reason:} $np_0=\answer{30*0.33}$
-and $n(1-p_0)=\answer{30*0.67}$. Are they both greater than 5? \wordChoice{\choice[correct]{Yes!}\choice{No!}}
+{\bf Reason:} $np_0=\answer{\sage{30*0.33}}$
+and $n(1-p_0)=\answer{\sage{30*0.67}}$. Are they both greater than 5? \wordChoice{\choice[correct]{Yes!}\choice{No!}}
     
     \item Based on the null hypothesis, what should you assume to be the mean and standard deviation of your data? 
 
@@ -193,7 +193,7 @@ approximately normal distribution?
 $\mu_{\bar x}=\answer{473}$ and $\sigma_{\bar x}=\answer[tolerance=0.0001]{{3/(10)}}$
     \item $Z=\frac{\bar x -\answer{473}}{\answer[tolerance=0.0001]{0.3}}\approx \mathcal N(0,1)$.
     \item $z^*=\answer[tolerance=0.0001]{\sage{(472-473)/0.3}}$
-    \item $\beta=\Pr(|Z|>|z^*|)=2-2\phi(|z^*|)=\answer[tolerance=0.0001]{2*0.00043}$
+    \item $\beta=\Pr(|Z|>|z^*|)=2-2\phi(|z^*|)=\answer[tolerance=0.0001]{\sage{2*0.00043}}$
     \item Do we accept or reject the null hypothesis?
     \begin{multipleChoice}
         \choice[correct]{Reject because $\beta< \alpha$}

@@ -74,7 +74,7 @@ $e^x$ & {\color{red} \verb|exp(x)|}
 Suppose we know, for a given experiment, the proportion of success in a population is $p_0$. If we pick a sample of size n from this population, then the proportion of success $\hat p$ in a given sample of size of  n is a random variable. To understand this, we can treat $Bernoulli(p_0)$-random variable $X_i$ such that $\Pr(X_i=1)=p_0$ and $\Pr(X_i=0)=1-p_0$, the proportion $\hat p$ can be seen as $\hat p=\frac{X_1+X_2+\ldots+X_n}{n}$ of where $Y=X_1+X_2+\ldots+X_n\sim Binomial(n,p_0)$.  Since we know $\mu_Y=np_0$ and $Var(Y)=np_0(1-p_0)$ for binomial random variables, we get 
 $$\mu_{\hat p}=\frac{\mu_Y}{n}=p_0 \mbox{ and } \sigma_{\hat p}=\sigma_{Y/n}=\sqrt{\frac{Var(Y)}{n^2}}=\sqrt{\frac{p_0(1-p_0)}{n}}$$
 
-We further know that $\hat p\approx \mathcal N(p_0,\sqrt{\frac{p_0(1-p_0)}{n}}$ gives a nice approximation if $np_0\geq 5$ and $n(1-p_0)\geq 5$ are both satisfied. 
+We further know that $\hat p\approx \mathcal N(p_0,\sqrt{\frac{p_0(1-p_0)}{n}})$ gives a nice approximation if $np_0\geq 5$ and $n(1-p_0)\geq 5$ are both satisfied. 
 
 \begin{problem}
 The company JCrew advertises that 95\% of its online orders ship within two working
@@ -90,9 +90,9 @@ approximately normal distribution?
     \choice{No}
     \choice[correct]{Yes}
 \end{multipleChoice}
-{\bf Reason:} $np_0=\answer{200*.95}$
+{\bf Reason:} $np_0=\answer{\sage{200*0.95}}$
 \wordChoice{ \choice{$<5$} \choice[correct]{$\geq 5$}}
-and $n(1-p_0)=\answer{200*.05}$
+and $n(1-p_0)=\answer{\sage{200*0.05}}$
 \wordChoice{ \choice{$<5$} \choice[correct]{$\geq 5$}}
     
     \item What is the mean and standard deviation of the sample distribution assuming it's normal?
@@ -118,9 +118,9 @@ Americans the sample proportion falls between 29\% and 33\%? Categorical (sample
 \begin{explanation}
 \begin{itemize} 
     \item Sample data \wordChoice{\choice[correct]{does}\choice{does not}} satisfy conditions necessary for the sample proportion to follow an
-approximately normal distribution because $np_0=\answer{300*.31}$
-\wordChoice{ \choice{$<5$} \choice[correct]{$\geq 5$}}
-and $n(1-p_0)=\answer{300*.69}$
+approximately normal distribution because $np_0=\answer{\sage{300*.31}}$ is 
+\wordChoice{ \choice{less than} \choice[correct]{more than}} 5.
+and $n(1-p_0)=\answer{\sage{300*.69}}$
 \wordChoice{ \choice{$<5$} \choice[correct]{$\geq 5$}}
     
     \item $\mu_{\hat p}=\answer{0.31}$ and $\sigma_{\hat p}=\answer[tolerance=0.0001]{\sage{sqrt(.31*.69/300)}}$
@@ -132,10 +132,10 @@ and $n(1-p_0)=\answer{300*.69}$
 \Pr(\hat p \leq 0.33) -\Pr(\hat p \leq 0.29)
 \\
 &=&
-\Pr(Z \leq \answer[tolerance=0.001]{(0.33 - 0.31)/0.0267 }) -\Pr(Z \leq \answer[tolerance=0.001]{(0.29 - 0.31)/0.0267 })
+\Pr(Z \leq \answer[tolerance=0.001]{\sage{(0.33 - 0.31)/sqrt(.31*.69/300)} }) -\Pr(Z \leq \answer[tolerance=0.001]{(0.29 - 0.31)/0.0267 })
 \\
 &=& 
-\phi(\answer[tolerance=0.001]{(0.33 - 0.31)/0.0267 })-\phi(\answer[tolerance=0.001]{(0.29 - 0.31)/0.0267 })
+\phi(\answer[tolerance=0.001]{\sage{(0.33 - 0.31)/sqrt(.31*.69/300)} })-\phi(\answer[tolerance=0.001]{\sage{(0.29 - 0.31)/sqrt(.31*.69/300)} })
 \\
 &=&
 \answer[tolerance=0.00005]{0.5468}
