@@ -104,7 +104,14 @@ a.sort()
 \end{sagesilent}
 Please, draw the box plot representing the following sample data consisting of 30 exam scores in a class of 100 students and \textbf{submit it in class on Monday}. Moreover, answer the following problems.
 
-$$\sage{data}$$
+\begin{sageOutput}
+def seabox(my_data):
+    import seaborn as sns
+    sns.set_style("whitegrid")
+    ax = sns.boxplot(x=my_data)
+    ax.show()
+seabox(data)
+\end{sageOutput}
 
 \begin{enumerate}
     \item Minimum is $\answer{\sage{min(data)}}$.
